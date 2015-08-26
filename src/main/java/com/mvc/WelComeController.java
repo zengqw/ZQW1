@@ -20,7 +20,7 @@ public class WelComeController {
 	
 	@RequestMapping(method = RequestMethod.GET)
 	public String helloWorld(ModelMap model) {
-		jedis.set("bnm", "测试jedis通过111");
+		jedis.set("bnm", "测试jedis通过11001");
 		System.out.println("Test jedis "+ jedis.get("bnm"));
 		model.addAttribute("msg", "hello worlsdf");
 
