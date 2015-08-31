@@ -40,7 +40,7 @@
 			<artifactId>jasper-compiler-jdt</artifactId>
 			<version>5.5.15</version>
 		</dependency>
-	
+
 		<!-- JSTL -->
 		<dependency>
 			<groupId>javax.servlet</groupId>
@@ -53,7 +53,11 @@
 			<artifactId>standard</artifactId>
 			<version>1.1.2</version>
 		</dependency>
-
+		<dependency>
+			<groupId>net.sourceforge.jexcelapi</groupId>
+			<artifactId>jxl</artifactId>
+			<version>2.6.12</version>
+		</dependency>
 		<!-- for compile only, your container should have this -->
 		<dependency>
 			<groupId>javax.servlet</groupId>
@@ -61,27 +65,28 @@
 			<version>2.5</version>
 			<scope>provided</scope>
 		</dependency>
-<dependency>  
-        <groupId>org.springframework.data</groupId>  
-        <artifactId>spring-data-redis</artifactId>  
-        <version>1.0.2.RELEASE</version>  
-    </dependency> 
-    <dependency>  
-        <groupId>org.springframework</groupId>  
-        <artifactId>spring-test</artifactId>  
-        <version>3.1.2.RELEASE</version>  
-        <scope>test</scope>  
-    </dependency>  
-    <dependency>  
-        <groupId>redis.clients</groupId>  
-        <artifactId>jedis</artifactId>  
-        <version>2.1.0</version>  
-    </dependency>  
-     <dependency>
-      <groupId>junit</groupId>
-      <artifactId>junit</artifactId>
-      <version>4.11</version>
-    </dependency>
+		<dependency>
+			<groupId>org.springframework.data</groupId>
+			<artifactId>spring-data-redis</artifactId>
+			<version>1.0.2.RELEASE</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-test</artifactId>
+			<version>3.1.2.RELEASE</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>redis.clients</groupId>
+			<artifactId>jedis</artifactId>
+			<version>2.1.0</version>
+		</dependency>
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>4.11</version>
+		</dependency>
+		
 	</dependencies>
 	<build>
 		<finalName>ZQW1</finalName>
