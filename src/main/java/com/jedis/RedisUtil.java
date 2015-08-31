@@ -1,19 +1,27 @@
 package com.jedis;
 
+import com.config.RedisConfig;
+import com.util.StringUtil;
+
 import redis.clients.jedis.Jedis;
 import redis.clients.jedis.JedisPool;
 import redis.clients.jedis.JedisPoolConfig;
 
+/**
+ * 配置redis的连接池
+ * @author zengqw
+ *
+ */
 public final class RedisUtil {
     
     //Redis服务器IP
-    private static String ADDR = "127.0.0.1";
+    private static String ADDR = RedisConfig.getConfig("redis.host");
     
     //Redis的端口号
-    private static int PORT = 6379;
+    private static int PORT = StringUtil.str2int(RedisConfig.getConfig("redis.port"));
     
     //访问密码
-    private static String AUTH = "admin";
+    private static String AUTH = RedisConfig.getConfig("redis.pass");
     
     //可用连接实例的最大数目，默认值为8；
     //如果赋值为-1，则表示不限制；如果pool已经分配了maxActive个jedis实例，则此时pool的状态为exhausted(耗尽)。

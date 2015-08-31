@@ -8,6 +8,9 @@ import java.util.Map;
 import org.junit.Before;
 import org.junit.Test;
 
+import com.config.RedisConfig;
+import com.util.StringUtil;
+
 import redis.clients.jedis.Jedis;
 
 /**
@@ -23,9 +26,10 @@ public class TestRedis {
     @Before
     public void setup() {
         //连接redis服务器，192.168.0.100:6379
-        jedis = new Jedis("192.168.0.107", 6379);
+        jedis = new Jedis(RedisConfig.getConfig("redis.host"), 
+        		StringUtil.str2int(RedisConfig.getConfig("redis.port")));
         //权限认证
-        jedis.auth("admin");  
+        jedis.auth(RedisConfig.getConfig("redis.pass"));  
     }
     
     /**
@@ -59,24 +63,24 @@ public class TestRedis {
         map.put("name", "xinxin");
         map.put("age", "22");
         map.put("qq", "123456");
-        jedis.hmset("user",map);
-        //取出user中的name，执行结果:[minxr]-->注意结果是一个泛型的List  
+        jedis.hmset("user1",map);
+        //取出user1中的name，执行结果:[minxr]-->注意结果是一个泛型的List  
         //第一个参数是存入redis中map对象的key，后面跟的是放入map中的对象的key，后面的key可以跟多个，是可变参数  
-        List<String> rsmap = jedis.hmget("user", "name", "age", "qq");
+        List<String> rsmap = jedis.hmget("user1", "name", "age", "qq");
         System.out.println(rsmap);  
   
         //删除map中的某个键值  
-        jedis.hdel("user","age");
-        System.out.println(jedis.hmget("user", "age")); //因为删除了，所以返回的是null  
-        System.out.println(jedis.hlen("user")); //返回key为user的键中存放的值的个数2 
-        System.out.println(jedis.exists("user"));//是否存在key为user的记录 返回true  
-        System.out.println(jedis.hkeys("user"));//返回map对象中的所有key  
-        System.out.println(jedis.hvals("user"));//返回map对象中的所有value 
+        jedis.hdel("user1","age");
+        System.out.println(jedis.hmget("user1", "age")); //因为删除了，所以返回的是null  
+        System.out.println(jedis.hlen("user1")); //返回key为user1的键中存放的值的个数2 
+        System.out.println(jedis.exists("user1"));//是否存在key为user1的记录 返回true  
+        System.out.println(jedis.hkeys("user1"));//返回map对象中的所有key  
+        System.out.println(jedis.hvals("user1"));//返回map对象中的所有value 
   
-        Iterator<String> iter=jedis.hkeys("user").iterator();  
+        Iterator<String> iter=jedis.hkeys("user1").iterator();  
         while (iter.hasNext()){  
             String key = iter.next();  
-            System.out.println(key+":"+jedis.hmget("user",key));  
+            System.out.println(key+":"+jedis.hmget("user1",key));  
         }  
     }
     
@@ -109,17 +113,17 @@ public class TestRedis {
     @Test  
     public void testSet(){  
         //添加  
-        jedis.sadd("user","liuling");  
-        jedis.sadd("user","xinxin");  
-        jedis.sadd("user","ling");  
-        jedis.sadd("user","zhangxinxin");
-        jedis.sadd("user","who");  
+        jedis.sadd("userSet","liuling");  
+        jedis.sadd("userSet","xinxin");  
+        jedis.sadd("userSet","ling");  
+        jedis.sadd("userSet","zhangxinxin");
+        jedis.sadd("userSet","who");  
         //移除noname  
-        jedis.srem("user","who");  
-        System.out.println(jedis.smembers("user"));//获取所有加入的value  
-        System.out.println(jedis.sismember("user", "who"));//判断 who 是否是user集合的元素  
-        System.out.println(jedis.srandmember("user"));  
-        System.out.println(jedis.scard("user"));//返回集合的元素个数  
+        jedis.srem("userSet","who");  
+        System.out.println(jedis.smembers("userSet"));//获取所有加入的value  
+        System.out.println(jedis.sismember("userSet", "who"));//判断 who 是否是userSet集合的元素  
+        System.out.println(jedis.srandmember("userSet"));  
+        System.out.println(jedis.scard("userSet"));//返回集合的元素个数  
     }  
   
     @Test  
