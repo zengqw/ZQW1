@@ -3,8 +3,8 @@ import redis.clients.jedis.Jedis;
 
 
 /**
- * 测试spring整合jedis操作redis
- * 启动redis配置  requirepass admin
+ * 娴嬭瘯spring鏁村悎jedis鎿嶄綔redis
+ * 鍚姩redis閰嶇疆  requirepass admin
  * redis-server.exe redis-conf
  * @author Administrator
  *
