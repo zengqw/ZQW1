@@ -1,0 +1,74 @@
+<div class="workload-data-list tables-manage clearfix">
+    <div class="inline-block table-item fl fixed init-table" data-type="equip"></div>
+    <div class="inline-block table-item table-bg-one fl fixed room-table hide" data-type="item"></div>
+    <div class="inline-block table-item table-bg-two fl fixed rank-table hide" data-type="info"></div>
+</div>
+<script type="text/template" id="J_equip_tpl">
+    <%_.each(list, function(item, index) {%>
+    <tr class="tr-item" data-type="<%= type %>" data-id="<%= item.equipType %>">
+        <td><%= index + 1 %></td>
+        <td>
+            <input type="text" class="input-text" value="<%= item.equipName%>"/>
+        </td>
+        <td>
+            <a href="javascript:void(0)" class="btn_icon btn-edit"   data-id="<%= item.equipType %>"></a>
+            <a href="javascript:void(0)" class="btn_icon btn-delete" data-id="<%= item.equipType %>"></a>
+        </td>
+    </tr>
+    <%});%>
+    <tr data-type="<%= type %>">
+        <td></td>
+        <td>
+            <input type="text" class="input-text" value=""/>
+        </td>
+        <td>
+            <a href="javascript:void(0)" class="btn_icon btn-add"></a>
+        </td>
+    </tr>
+</script>
+<script type="text/template" id="J_type_tpl">
+    <%_.each(list, function(item, index) {%>
+    <tr class="tr-item" data-type="<%= type %>" data-id="<%= item.itemType %>">
+        <td><%= index + 1 %></td>
+        <td>
+            <input type="text" class="input-text" value="<%= item.itemName%>"/>
+        </td>
+        <td>
+            <a href="javascript:void(0)" class="btn_icon btn-edit"   data-id="<%= item.itemType %>"></a>
+            <a href="javascript:void(0)" class="btn_icon btn-delete" data-id="<%= item.itemType %>"></a>
+        </td>
+    </tr>
+    <%});%>
+    <tr data-type="<%= type %>">
+        <td></td>
+        <td>
+            <input type="text" class="input-text" value=""/>
+        </td>
+        <td>
+            <a href="javascript:void(0)" class="btn_icon btn-add"></a>
+        </td>
+    </tr>
+</script>
+<script type="text/template" id="J_info_tpl">
+    <%_.each(list, function(item, index) {%>
+    <tr class="tr-item" data-type="<%= type %>" data-id="<%= item.itemInfo %>">
+        <td><%= index + 1 %></td>
+        <td>
+            <input type="text" class="input-text" value="<%= item.infoName%>"/>
+        </td>
+        <td>
+            <a href="javascript:void(0)" class="btn_icon btn-edit"   data-id="<%= item.itemInfo %>"></a>
+            <a href="javascript:void(0)" class="btn_icon btn-delete" data-id="<%= item.itemInfo %>"></a>
+        </td>
+    </tr>
+    <%});%>
+    <tr data-type="<%= type %>">
+        <td></td>
+        <td>
+            <input type="text" class="input-text" value=""/>
+        </td>
+        <td>
+            <a href="javascript:void(0)" class="btn_icon btn-add"></a>
+        </td>
+    </tr>
+</script>

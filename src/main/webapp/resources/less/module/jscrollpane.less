@@ -1,0 +1,135 @@
+/*
+ 	Css for jscrollpane
+ */
+.jspContainer {
+  position : relative;
+  overflow : hidden;
+}
+
+.jspPane {
+  position : absolute;
+}
+
+.jspCap {
+  display : none;
+}
+
+.jspTrack {
+  position      : relative;
+  margin        : 0 3px;
+  width         : 8px;
+  border-radius : 4px;
+}
+
+.jspDrag {
+  position      : relative;
+  cursor        : pointer;
+  top           : 0;
+  left          : 0;
+  background    : #C7C7C7;
+  border-radius : 4px;
+}
+
+.jspHover {
+  background : #9A9A9A;
+}
+
+.jspArrow {
+  display           : block;
+  margin            : 0;
+  padding           : 0;
+  cursor            : pointer;
+  background-image  : url(../images/plugin/jscrollpane_icon.png);
+  background-repeat : no-repeat;
+  text-indent       : -20000px;
+}
+
+.jspArrow.jspDisabled {
+  cursor : default;
+}
+
+.jspArrowUp {
+  background-position : 0 0;
+}
+
+.jspArrowUp.jspDisabled {
+  background-position : 0 -50px;
+}
+
+.jspArrowDown {
+  background-position : 0 -100px;
+}
+
+.jspArrowDown.jspDisabled {
+  background-position : 0 -150px;
+}
+
+.jspArrowLeft {
+  background-position : 0 -200px;
+}
+
+.jspArrowLeft.jspDisabled {
+  background-position : 0 -250px;
+}
+
+.jspArrowRight {
+  background-position : 4px -300px;
+}
+
+.jspArrowRight.jspDisabled {
+  background-position : 4px -350px;
+}
+
+/* Vertical */
+.jspVerticalBar {
+  position         : absolute;
+  top              : 0;
+  right            : 0;
+  width            : 14px;
+  height           : 100%;
+  background-color : #FFF;
+  border           : solid #D2D2D2;
+  border-width     : 0 1px;
+}
+
+.jspVerticalBar .jspArrow {
+  height : 15px;
+}
+
+.jspVerticalBar .jspArrow:focus {
+  outline : none;
+}
+
+/* Horizontal */
+.jspHorizontalBar {
+  position : absolute;
+  bottom   : 0;
+  left     : 0;
+  width    : 100%;
+  height   : 10px;
+}
+
+.jspHorizontalBar .jspCap {
+  float : left;
+}
+
+.jspHorizontalBar .jspTrack {
+  float  : left;
+  margin : 2px 0;
+  height : 6px;
+}
+
+.jspHorizontalBar .jspDrag {
+  float  : left;
+  height : 6px;
+}
+
+.jspHorizontalBar .jspArrow {
+  float  : left;
+  width  : 16px;
+  height : 100%;
+}
+
+.jspCorner {
+  display : none;
+}

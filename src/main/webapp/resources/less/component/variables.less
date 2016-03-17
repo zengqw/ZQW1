@@ -1,0 +1,112 @@
+@charset "UTF-8";
+@import "mixins";
+
+@white:                  #fff;
+@gray:                   #b5b5b5;
+@lightGray:              #D4D4D4;
+@darkGray:               #F3F3F3;
+@light-green:            #e1eaea;
+@green:                  #00B4B4;
+@greenGray:              #d8f7f8;
+@redGray:                #e1a6a7;
+@yellow:                 #FFFDDB;
+
+//== Colors
+@gray-base:              #000;
+@gray-darker:            #222;
+@gray-dark:              #333;
+@gray:                   #555;
+@gray-light:             #777;
+@gray-lighter:           #eee;
+
+@brand-primary:         #363840;
+@brand-success:         #5cb85c;
+@brand-info:            #17B28F;
+@brand-warning:         #ff6c00;
+@brand-danger:          #e60012;
+@white        :         #FFF;
+
+//== normalize
+@body-bg:              @white;
+@text-color:            @gray-dark;
+@link-color:            #a4acac;
+@link-hover-color:      darken(@link-color, 15%);
+@line-height-base:      1.428571429; // 20/14
+@line-height-computed:    floor((@font-size-base * @line-height-base)); // ~20px 设置最小高度
+@border-color:         #e3e3e3;
+
+//== Font
+@font-family-sans-serif:  "Helvetica Neue", Helvetica, Arial, sans-serif;
+@font-family-st:          "宋体", Helvetica, Arial, sans-serif;
+@font-family-yaHei:       "Microsoft YaHei","微软雅黑","Microsoft JhengHei", MingLiu,Arial,sans-serif;
+@font-family-base:        @font-family-yaHei;
+@font-size-base:          14px;
+
+//== Image
+@image-path:              "../images";
+
+//== State
+@state-success-text:             #22ac38;
+@state-success-bg:               #dff0d8;
+@state-success-border:           darken(spin(@state-success-bg, -10), 5%);
+
+@state-info-text:                #31708f;
+@state-info-bg:                  #d9edf7;
+@state-info-border:              darken(spin(@state-info-bg, -10), 7%);
+
+@state-warning-text:             #8a6d3b;
+@state-warning-bg:               #fcf8e3;
+@state-warning-border:           darken(spin(@state-warning-bg, -10), 5%);
+
+@state-danger-text:              #c22c2f;
+@state-danger-bg:                #f2dede;
+@state-danger-border:            darken(spin(@state-danger-bg, -10), 5%);
+
+//== Tables
+@table-td-padding:              10px;
+@table-th-padding:              5px 10px;
+@table-bg:                      transparent;
+@table-bg-accent:               #F3FCFE;
+@table-bg-hover:                #F3FCFE;
+@table-bg-active:               #F3F3F3;
+@table-border-color:            #cecece;
+@table-border-th-color:         @table-border-color;
+
+//== Buttons
+@btn-font-weight:                normal;
+
+@btn-default-color:              #333;
+@btn-default-bg:                 #fff;
+@btn-default-border:             #ccc;
+
+@btn-primary-color:              #fff;
+@btn-primary-bg:                 @brand-primary;
+@btn-primary-border:             darken(@btn-primary-bg, 5%);
+
+@btn-success-color:              #fff;
+@btn-success-bg:                 @brand-success;
+@btn-success-border:             darken(@btn-success-bg, 5%);
+
+@btn-info-color:                 #fff;
+@btn-info-bg:                    @brand-info;
+@btn-info-border:                darken(@btn-info-bg, 5%);
+
+@btn-warning-color:              #fff;
+@btn-warning-bg:                 @brand-warning;
+@btn-warning-border:             darken(@btn-warning-bg, 5%);
+
+@btn-danger-color:               #fff;
+@btn-danger-bg:                  @brand-danger;
+@btn-danger-border:              darken(@btn-danger-bg, 5%);
+
+@btn-link-disabled-color:        @gray-light;
+
+//== Forms
+@input-bg:                       @white;
+@input-bg-disabled:              @gray-lighter;
+@input-color:                    @text-color;
+@input-border:                   #ced6dc;
+@input-border-focus:             @brand-danger;
+@input-color-placeholder:        #999;
+@input-height-base:              @line-height-base;
+@form-group-margin-bottom:       15px;

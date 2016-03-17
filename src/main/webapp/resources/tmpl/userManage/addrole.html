@@ -1,0 +1,181 @@
+<div class="workload-operation">
+    <div class="workload-search no-border">
+        <div class="search-form clearfix J_form_list">
+        </div>
+    </div>
+</div>
+<div class="workload-data-list">
+
+</div>
+<script type="text/template" id="J_tpl_action_list">
+    <dl class="J_name dl-tip">
+        <dt>角色名称：</dt>
+        <dd>
+            <input type="text" name="name" labelname="角色名称" serialize="true" ismandatory="0" escape="1" placeholder="" class="input-text J_input" value="">
+            <div class="error-tip J_errorTip"></div>
+        </dd>
+    </dl>
+    <dl>
+        <dt>角色描述：</dt>
+        <dd><input type="text" name="descripation" labelname="描述" serialize="true" ismandatory="0" escape="1" placeholder="" class="input-text" value=""></dd>
+    </dl>
+    <dl class="u-checkbox-list ac-checkbox-list clearfix">
+        <dt>动作：</dt>
+        <dd class="checkbox-parent">
+            <div>
+                    <span class="item-checkbox">
+                        <a href="javascript:void(0)"  class="input-checkbox" data-type="all">全选</a>
+                    </span>
+            </div>
+            <div class="clearfix"></div>
+            <%_.each(actionNameList, function(item, index) {%>
+                    <span class="item-checkbox">
+                       <a href="javascript:void(0)" data-type="item" class="input-checkbox" data-value="<%= item[1]%>">
+                           <%= item[0] %>
+                       </a>
+                    </span>
+            <%});%>
+            <input type="hidden" name="action"  serialize="true" ismandatory="0" escape="0" value="">
+        </dd>
+    </dl>
+    <dl class="u-checkbox-list ac-checkbox-list clearfix">
+        <dt>资产类型：</dt>
+        <dd class="checkbox-parent">
+            <div>
+                <span class="item-checkbox">
+                    <a href="javascript:void(0)"  class="input-checkbox" data-type="all">全选</a>
+                </span>
+            </div>
+            <div class="clearfix"></div>
+            <%_.each(assetTypeList, function(item,index) {%>
+                <span class="item-checkbox">
+                   <a href="javascript:void(0)" data-type="item" class="input-checkbox" data-value="<%= item.id%>">
+                       <%= item.name %>
+                   </a>
+                </span>
+            <%});%>
+            <input type="hidden" name="type"  serialize="true" ismandatory="0" escape="0" value="">
+        </dd>
+    </dl>
+    <dl class="u-checkbox-list ac-checkbox-list clearfix">
+        <dt>资产状态：</dt>
+        <dd class="checkbox-parent">
+            <div>
+                <span class="item-checkbox">
+                    <a href="javascript:void(0)"  class="input-checkbox" data-type="all">全选</a>
+                </span>
+            </div>
+            <div class="clearfix"></div>
+            <%_.each(statusList, function(item, index) {%>
+                <span class="item-checkbox">
+                   <a href="javascript:void(0)" data-type="item" class="input-checkbox" data-value="<%= item.id%>">
+                       <%= item.name %>
+                   </a>
+                </span>
+            <%});%>
+            <input type="hidden" name="sta"  serialize="true" ismandatory="0" escape="0" value="">
+        </dd>
+    </dl>
+    <dl class="u-checkbox-list ac-checkbox-list clearfix">
+        <dt>资产所属公司：</dt>
+        <dd class="checkbox-parent">
+            <div>
+                <span class="item-checkbox">
+                    <a href="javascript:void(0)"  class="input-checkbox" data-type="all">全选</a>
+                </span>
+            </div>
+            <div class="clearfix"></div>
+            <%_.each(companyList, function(item,index) {%>
+                <span class="item-checkbox">
+                   <a href="javascript:void(0)" data-type="item" class="input-checkbox" data-value="<%= item.id%>">
+                       <%= item.name %>
+                   </a>
+                </span>
+            <%});%>
+            <input type="hidden" name="company"  serialize="true" ismandatory="0" escape="0" value="">
+        </dd>
+    </dl>
+    <dl class="u-checkbox-list ac-checkbox-list clearfix">
+        <dt>属性管理：</dt>
+        <dd class="checkbox-parent">
+            <div>
+                <span class="item-checkbox">
+                    <a href="javascript:void(0)"  class="input-checkbox" data-type="all">全选</a>
+                </span>
+            </div>
+            <div class="clearfix"></div>
+            <%_.each(properActionNameList, function(item, index) {%>
+                <span class="item-checkbox">
+                   <a href="javascript:void(0)" data-type="item" class="input-checkbox" data-value="<%= item[0]%>">
+                       <%= item[1] %>
+                   </a>
+                </span>
+            <%});%>
+            <input type="hidden" name="propertyAction"  serialize="true" ismandatory="0" escape="0" value="">
+        </dd>
+    </dl>
+    <dl class="u-checkbox-list ac-checkbox-list clearfix" data-oprts="add,modify,view">
+        <dt>资产属性：</dt>
+        <dd class="checkbox-parent">
+            <div>
+                <span class="item-checkbox">
+                    <div>
+                        <span class="green-text">添加</span>
+                        <span class="red-text">修改</span>
+                        <span class="blue-text">查看</span>
+                        <span>名称</span>
+                    </div>
+                    <a href="javascript:void(0)"  class="input-checkbox" data-type="all" data-oprt="add"></a>
+                    <a href="javascript:void(0)"  class="input-checkbox" data-type="all" data-oprt="modify"></a>
+                    <a href="javascript:void(0)"  class="input-checkbox input-checkbox-hover" data-type="all" data-oprt="view">全选</a>
+                </span>
+                <span class="item-checkbox">
+                    <div>
+                        <span class="green-text">添加</span>
+                        <span class="red-text">修改</span>
+                        <span class="blue-text">查看</span>
+                        <span>名称</span>
+                    </div>
+                </span>
+                <span class="item-checkbox">
+                    <div>
+                        <span class="green-text">添加</span>
+                        <span class="red-text">修改</span>
+                        <span class="blue-text">查看</span>
+                        <span>名称</span>
+                    </div>
+                </span>
+                <span class="item-checkbox">
+                    <div>
+                        <span class="green-text">添加</span>
+                        <span class="red-text">修改</span>
+                        <span class="blue-text">查看</span>
+                        <span>名称</span>
+                    </div>
+                </span>
+            </div>
+            <div class="clearfix"></div>
+            <%_.each(propertyList, function(item,index) {%>
+                <span class="item-checkbox">
+                   <a href="javascript:void(0)" data-type="item" data-oprt="add" class="input-checkbox" data-value="<%= item.propertyName%>">
+                   </a>
+                   <a href="javascript:void(0)" data-type="item" data-oprt="modify" class="input-checkbox" data-value="<%= item.propertyName%>">
+                   </a>
+                   <a href="javascript:void(0)" data-type="item" data-oprt="view" class="input-checkbox input-checkbox-hover" data-value="<%= item.propertyName%>">
+                       <%= item.propertyDesc %>
+                   </a>
+                </span>
+            <%});%>
+            <input type="hidden" name="propertyAdd"  serialize="true" ismandatory="0" escape="0" value="" data-oprt="add">
+            <input type="hidden" name="propertyModify"  serialize="true" ismandatory="0" escape="0" value="" data-oprt="modify">
+            <input type="hidden" name="propertyView"  serialize="true" ismandatory="0" escape="0" value="" data-oprt="view">
+        </dd>
+    </dl>
+    <dl class="btn-item workload-operate-box">
+        <dd>
+            <a href="javascript:void(0)"  class="search J_add_role">添加角色</a>
+        </dd>
+    </dl>
+    <input type="hidden" class="search-key">
+    <input type="hidden" class="search-full-key">
+</script>

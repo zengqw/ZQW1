@@ -1,0 +1,80 @@
+@image-path : '../images/';
+@tree-path : '../images/interactive/';
+
+.checkbox-imitation {
+  display        : inline-block;
+  padding-left   : 16px;
+  cursor         : pointer;
+  font-size      : 12px;
+  line-height    : 22px;
+  text-indent    : 4px;
+  vertical-align : middle;
+  height         : 22px;
+  background     : url('@{image-path}input_icon.png') no-repeat 2px 0;
+  &-active {
+    background-position : 2px -50px;
+  }
+}
+
+.tree-fold {
+  display        : inline-block;
+  vertical-align : middle;
+  height         : 26px;
+  width          : 25px;
+  background     : url('@{tree-path}tree_line1.png') center;
+}
+
+dl.dl-tree {
+  width  : auto;
+  height : auto;
+}
+
+.tree-wrap {
+  margin-left : 15px;
+  padding     : 3px 10px 3px 3px;
+  max-height  : 600px;
+  min-width   : 400px;
+  overflow    : auto;
+  border      : 1px solid #ddd;
+
+  li {
+    ul {
+      margin  : 0;
+      padding : 0 0 0 18px;
+      &.tree-mid {
+        padding-left : 26px;
+        background   : url('@{tree-path}tree_line9.png') repeat-y;
+      }
+    }
+
+    &.tree-main {
+      .tree-fold-show {
+        background : url('@{tree-path}tree_line2.png') center 0 no-repeat;
+      }
+
+      &.active {
+        & > .tree-fold-show {
+          background : url('@{tree-path}tree_line1.png') center 0 no-repeat;
+        }
+      }
+    }
+
+    &.tree-sub {
+      .tree-fold-show {
+        background : url('@{tree-path}tree_line4.png') center 0 no-repeat;
+      }
+
+      &.active {
+        & > .tree-fold-show {
+          background : url('@{tree-path}tree_line3.png') center 0 no-repeat;
+        }
+      }
+    }
+
+    &.active {
+      & > .tree-mid {
+        display : none;
+      }
+    }
+  }
+}

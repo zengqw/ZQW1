@@ -1,0 +1,39 @@
+<div class="workload-operation">
+    <div class="show-search show-search-hover">搜索</div>
+    <div class="workload-search">
+        <i class="arrow"></i>
+        <div class="search-form clearfix">
+            <dl>
+                <dt>英文姓名：</dt>
+                <dd><input type="text" name="nameEn" labelname="英文姓名" serialize="true" ismandatory="0" escape="1" placeholder="请输入英文姓名关键字" class="input-text"></dd>
+            </dl>
+            <dl>
+                <dt>中文姓名：</dt>
+                <dd><input type="text" name="nameCh" labelname="中文姓名" serialize="true" ismandatory="0" escape="1" placeholder="请输入中文姓名关键字" class="input-text"></dd>
+            </dl>
+            <dl>
+                <dt>部门：</dt>
+                <dd><input type="text" name="department" labelname="部门" serialize="true" ismandatory="0" escape="1" placeholder="请输入部门关键字" class="input-text"></dd>
+            </dl>
+            <dl class="btn-item workload-operate-box">
+                <dd>
+                    <a href="javascript:void(0);"  class="search ac_searchWorkload" data-hash="#search">查询</a>
+                    <a href="javascript:void(0);"  class="ac_resetForm">清空</a>
+                </dd>
+            </dl>
+            <input type="hidden" class="search-key">
+            <input type="hidden" class="search-full-key">
+        </div>
+    </div>
+</div>
+<div class="workload-data">
+    <div class="workload-data-header text-right">
+        <a href="javascript:void(0);" class="icon-btn export  J_export">导出用户</a>
+    </div>
+    <div class="workload-data-list"></div>
+</div>
+<script type="text/template" id="J_password_tpl">
+    <div class="text-center">
+        <input type="password" name="password" labelname="密码" class="input-text reset-passwd" maxlength="20">
+    </div>
+</script>

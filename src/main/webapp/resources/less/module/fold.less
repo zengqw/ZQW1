@@ -1,0 +1,23 @@
+@image : '../images/fold_icon.png';
+
+.fold-wrapper {
+  .fold-trigger {
+    margin-top : 15px;
+    border-top : 1px solid @green;
+    text-align : center;
+    span {
+      cursor     : pointer;
+      display    : inline-block;
+      width      : 60px;
+      height     : 27px;
+      background : @green url(@image) no-repeat center 7px;
+      &.active {
+        background-position: center -17px;
+      }
+
+      &:hover {
+        opacity: .9;
+      }
+    }
+  }
+}

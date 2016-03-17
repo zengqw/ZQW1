@@ -1,0 +1,171 @@
+/* table
+ * t --> table
+*/
+
+.t-normal {
+  width:100%;
+  th {
+    background-color: @darkGray
+  }
+  th, td {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    padding: 6px 10px;
+  }
+}
+
+.t-border {
+  border-top: 1px solid @lightGray;
+  border-right: 1px solid @lightGray;
+  th, td {
+    border-left: 1px solid @lightGray;
+    border-bottom: 1px solid @lightGray;
+  }
+}
+
+.t-striped tr:nth-child(even) {
+  background-color: @darkGray
+}
+
+.t-striped tr:nth-child(odd) {
+  background-color: @white
+}
+
+/* module */
+
+/* fixedbox
+ *  fx --> fixedbox
+*/
+
+.m-fixed-box {
+  clear: both;
+  width: 90%;
+  position: relative;
+  display: inline-block;
+  max-height: 500px;
+  padding-bottom: 17px;
+  overflow-y: auto;
+  overflow-x: hidden;
+  white-space: nowrap;
+  .input-text {
+    width: 120px;
+    line-height: 15px;
+    padding: 1px;
+  }
+  .input-checkbox {
+    height: 17px;
+    background-position: 0 -3px;
+  }
+  .input-checkbox-hover {
+    background-position: 0 -53px;
+  }
+  .fx-unit {
+    float: left;
+    th, td {
+      padding: 8px 20px;
+      box-shadow: 1px 1px #ddd;
+    }
+    tr.hover td {
+      background-color: #f3fcfe;
+    }
+    tr.selected td {
+      background-color: #c7f0f0;
+    }
+  }
+
+  .fx-l, .fx-m {
+    table {
+      border-right: none;
+    }
+  }
+  .fx-l, .fx-r {
+    position: relative;
+    top: 0;
+    left: 0;
+    z-index: 1;
+    th, td {
+      background: @yellow;
+    }
+  }
+  .fx-l {
+    margin-right: -232px;
+    width: 232px;
+    table {
+      width: 100%;
+      td {
+        max-width: 125px;
+      }
+    }
+  }
+  .fx-r {
+    left: auto;
+    right: 0;
+    margin-left: -122px;
+    width: 122px;
+    table {
+      width: 100%;
+    }
+    td {
+      text-align: center;
+      padding: 0px;
+      height: 36px;
+      vertical-align: middle;
+    }
+    &.no-control {
+      width:1px;
+      overflow: hidden;
+      margin-left: -2px;
+      th, td {
+        width: 3px;
+        overflow: hidden;
+      }
+    }
+  }
+  .fx-m {
+    width: 100%;
+    table {
+      position: relative;
+      width: 100%;
+    }
+    .content {
+      position: relative;;
+      max-height: 500px;
+      margin-left: 232px;
+      margin-right: 122px;
+      overflow-x: auto;
+      overflow-y: hidden;
+      &.no-control {
+        margin-right: 2px;
+      }
+    }
+  }
+
+  table.table-fixed {
+    position: absolute !important;
+    top: 0;
+    z-index: 0;
+    table-layout: fixed;
+  }
+}
+
+
+.fixed-box{
+  max-height: 400px;
+  overflow: auto;
+}
+
+.ux-infolist{
+  .ux-infolist_empty {
+    position: relative;
+    display: block;
+    padding-top: 140px;
+    width: 100%;
+    line-height: 40px;
+    color: #bdc3c7;
+    background: url(../images/empty.png) no-repeat center 0;
+    font-size: 18px;
+    font-family: "Microsoft YaHei";
+    text-align: center;
+  }
+}

@@ -1,0 +1,31 @@
+<div class="workload-operation">
+    <div class="workload-search no-border">
+        <div class="search-form clearfix">
+            <dl>
+                <dt>角色名称：</dt>
+                <dd><input type="text" name="name" labelname="角色名称" serialize="true" ismandatory="0" escape="1" placeholder="请输入角色名称关键字" class="input-text"></dd>
+            </dl>
+            <dl class="workload-operate-box">
+                <dd>
+                    <a href="javascript:void(0)"  class="search ac_searchWorkload">查询</a>
+                </dd>
+            </dl>
+            <input type="hidden" class="search-key">
+            <input type="hidden" class="search-full-key">
+        </div>
+    </div>
+</div>
+<div class="workload-data-list">
+
+</div>
+<script type="text/template" id="J_unit_tpl">
+    <%_.each(data, function(item, index) {%>
+    <tr>
+        <td><%= index+1 %></td>
+        <td><%= item.name%></td>
+        <td>
+            <a href="#userManage/viewrole/<%= item.id %>">查看角色</a>
+        </td>
+    </tr>
+    <%});%>
+</script>

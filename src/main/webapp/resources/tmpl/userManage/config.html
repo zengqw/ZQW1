@@ -1,0 +1,77 @@
+<div class="workload-operation">
+    <div class="show-search show-search-hover">搜索</div>
+    <div class="workload-search">
+        <i class="arrow"></i>
+        <div class="search-form clearfix">
+            <dl>
+                <dt>成本中心编码：</dt>
+                <dd><input type="text" name="sn" labelname="成本中心编码" serialize="true" ismandatory="0" escape="1" placeholder="请输入成本中心编码关键字" class="input-text"></dd>
+            </dl>
+            <dl>
+                <dt>成本中心名称：</dt>
+                <dd><input type="text" name="name" labelname="成本中心名称" serialize="true" ismandatory="0" escape="1" placeholder="请输入成本中心名称关键字" class="input-text"></dd>
+            </dl>
+            <dl>
+                <dt>类型：</dt>
+                <dd>
+                    <div class="select-box">
+                        <em class="ac_selectBox">请选择</em>
+                        <ul class="select-auto">
+                            <li class="ac_selectItem" val="0">请选择</li>
+                            <li class="ac_selectItem" val="1">网管</li>
+                            <li class="ac_selectItem" val="2">财务</li>
+                            <li class="ac_selectItem" val="3">IT</li>
+                            <li class="ac_selectItem" val="4">行政</li>
+                            <li class="ac_selectItem" val="5">其他</li>
+                        </ul>
+                        <input type="hidden" name="usageClass" labelname="填写状态" serialize="true" ismandatory="0" escape="0" value="" class="select-value">
+                    </div>
+                </dd>
+            </dl>
+            <dl class="btn-item workload-operate-box">
+                <dd>
+                    <a href="javascript:void(0);"  class="search ac_searchWorkload" data-hash="#search">查询</a>
+                    <a href="javascript:void(0);"  class="ac_resetForm">清空</a>
+                </dd>
+            </dl>
+            <input type="hidden" class="search-key">
+            <input type="hidden" class="search-full-key">
+        </div>
+    </div>
+</div>
+<div class="workload-data">
+    <div class="workload-data-header hide J_setting_box">
+        <dl>
+            <dt>设置用户类型：</dt>
+            <dd>
+                <div class="select-box">
+                    <em class="ac_selectBox">请选择</em>
+                    <ul class="select-auto">
+                        <li class="ac_selectItem" val="">不设置</li>
+                        <li class="ac_selectItem" val="1">网管</li>
+                        <li class="ac_selectItem" val="2">财务</li>
+                        <li class="ac_selectItem" val="3">IT</li>
+                        <li class="ac_selectItem" val="4">行政</li>
+                        <li class="ac_selectItem" val="5">其他</li>
+                    </ul>
+                    <input type="hidden" name="usageClass" labelname="填写状态" serialize="true" ismandatory="0" escape="0" value="" class="select-value J_usageClass">
+                </div>
+            </dd>
+        </dl>
+        <a href="javascript:void(0)" class="o-btn o-btn-success J_setting">设置</a>
+    </div>
+    <div class="workload-data-list"></div>
+</div>
+<script type="text/template" id="J_unit_tpl">
+    <%
+        types = ["","网管","财务","IT","行政","其他"];
+        _.each(data, function(item, index) {
+    %>
+    <tr>
+        <td><%= index + 1 %></td>
+        <td><%=item.sn%></td>
+        <td><%=item.name%></td>
+        <td><%=types[item.usageClass]%></td>
+    </tr>
+    <%});%>
+</script>

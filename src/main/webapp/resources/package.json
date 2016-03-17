@@ -1,0 +1,18 @@
+{
+    "name": "gulp-less",
+    "version": "1.0.0",
+    "private": true,
+    "description": "gulp-less",
+    "main": "gulpfile.js",
+    "dependencies": {},
+    "devDependencies": {
+        "gulp": "~3.5.6",
+        "gulp-less": "1.3.6",
+        "gulp-minify-css": "~0.3.0",
+        "gulp-concat": "~2.4.0",
+        "gulp-rename": "~1.2.0"
+    },
+    "keywords": ["gulp","gulp-less","less"],
+    "author": "",
+    "license": "ISC"
+}

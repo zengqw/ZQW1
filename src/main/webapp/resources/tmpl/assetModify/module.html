@@ -1,0 +1,170 @@
+<div class="workload-data">
+    <div class="workload-operation">
+        <div class="workload-search no-border assets-equip-box J_modifyWrapper"></div>
+    </div>
+    <div class="workload-data-list text-center"></div>
+</div>
+<script type="text/template" id="J_tpl_modify">
+    <% _.each(dataGroup, function(group, index){ %>
+    <div class="u-panel u-panel-sm clearfix">
+        <div class="panel-header" style="color: <%= group.color %>; border-color: <%= group.color %>"><%= group.text %></div>
+        <%_.each(group.children, function(item) {%>
+        <%= _.template(tpl)(item)%>
+        <% }) %>
+    </div>
+    <% }) %>
+    <dl class="btn-item workload-operate-box">
+        <dd>
+            <a href="javascript:void(0);" class="search ac_assetModify">修改</a>
+            <a href="javascript:void(0);" class="ac_assetRemove">删除</a>
+            <a href="javascript:void(0);" class="ac_assetHistory">查看历史记录</a>
+            <a href="javascript:void(0);" class="ac_assetShift">转移此资产</a>
+        </dd>
+    </dl>
+</script>
+<script type="text/template" id="J_tpl_shift">
+    <div class="workload-operation J_shift">
+        <div class="workload-search no-border assets-equip-box">
+            <% _.each(data, function(item, index){%>
+            <%= _.template(tpl)(item)%>
+            <% }) %>
+
+            <dl class="btn-item workload-operate-box">
+                <dd>
+                    <a href="javascript:void(0);" class="search ac_shiftNext">下一步</a>
+                </dd>
+            </dl>
+        </div>
+    </div>
+</script>
+<script type="text/template" id="J_tpl_shiftCompare">
+    <div class="workload-operation J_shiftCompare">
+        <div class="workload-search no-border assets-equip-box">
+            <div class="ml10 mr10 shift-table-wrapper">
+                <table class="t-normal t-border t-striped">
+                    <tr>
+                        <td>资产转移时间：</td>
+                        <td colspan="3"><%= transferDate %></td>
+                    </tr>
+                    <tr>
+                        <td>转入资产编号：</td><td><%= newAssetBean.assetsSn %></td>
+                        <td>转出资产编号：</td><td><%= oldAssetBean.assetsSn %></td>
+                    </tr>
+                    <tr>
+                        <td>转入资产所属公司：</td><td><%= newAssetBean.assetsCompany %></td>
+                        <td>转出资产所属公司：</td><td><%= oldAssetBean.assetsCompany %></td>
+                    </tr>
+                    <tr>
+                        <td>转入资产价格（USGAAP）：</td><td><%= newAssetBean.financePrice %></td>
+                        <td>转出资产价格（USGAAP）：</td><td><%= oldAssetBean.financePrice %></td>
+                    </tr>
+                    <tr>
+                        <td>转入资产使用月数（USGAAP）：</td><td><%= newAssetBean.financeUseMonth %></td>
+                        <td>转出资产使用月数（USGAAP）：</td><td><%= oldAssetBean.financeUseMonth %></td>
+                    </tr>
+                    <tr>
+                        <td>转入转出资产价格（PRCGAAP）：</td><td><%= newAssetBean.prcFinanceUseMonth %></td>
+                        <td>转出转出资产价格（PRCGAAP）：</td><td><%= oldAssetBean.prcFinanceUseMonth %></td>
+                    </tr>
+                    <tr>
+                        <td>转入资产价格（PRCGAAP)：</td><td><%= newAssetBean.prcFinancePrice %></td>
+                        <td>转出资产价格（PRCGAAP)：</td><td><%= oldAssetBean.prcFinancePrice %></td>
+                    </tr>
+                    <tr>
+                        <td>转入资产状态：</td><td><%= newAssetBean.status %></td>
+                        <td>转出资产状态：</td><td><%= oldAssetBean.status %></td>
+                    </tr>
+                </table>
+            </div>
+            <dl class="btn-item workload-operate-box">
+                <dd>
+                    <a href="javascript:void(0);" class="search ac_shiftConfirm">确定</a>
+                    <a href="javascript:void(0);" class="ac_shiftBack">返回</a>
+                </dd>
+            </dl>
+        </div>
+    </div>
+</script>
+<script type="text/template" id="J_tpl_module">
+    <div class="search-form clearfix">
+        <%_.each(data, function(item) {%>
+        <% if(item.type == "text"){%>
+        <dl class="<%= 'J_' + item.name %> dl-tip">
+            <dt class="<%= item.required ? 'required' : ''%>"><%= item.label%>：</dt>
+            <dd>
+                <input type="text" name="<%= item.name%>" labelname="<%= item.label%>" serialize="true" ismandatory="0" escape="1"  class="input-text J_input">
+                <% if(item.extend == "search"){ %>
+                <i class="btn-search J_input_search" data-url="<%= item.extendUrl%>"></i>
+                <% } %>
+                <div class="error-tip"></div>
+            </dd>
+        </dl>
+        <%}else if(item.type == "select" || item.type == "select-ajax" || item.type == "select-extend" || item.type == "select-ajax-effect"){%>
+        <dl class="<%= 'J_' + item.name %> dl-tip">
+            <dt class="<%= item.required ? 'required' : ''%>"><%= item.label%>：</dt>
+            <dd>
+                <div class="select-box">
+                    <em class="ac_selectBox">请选择</em>
+                    <ul class="select-auto">
+                        <%_.each(item.options, function(option) {%>
+                        <li class="ac_selectItem" val="<%= option.value %>"><%= option.text %></li>
+                        <%});%>
+                    </ul>
+                    <input type="hidden" name="<%= item.name %>" labelname="<%= item.label %>" serialize="true" ismandatory="0" escape="0" value="" class="select-value J_input">
+                </div>
+                <% if(item.extend == "add") {%>
+                <i class="btn-add J_add" data-url="<%= item.extendUrl%>">+</i>
+                <% }else if(item.extend == "search"){ %>
+                <i class="btn-search J_select_search" data-url="<%= item.extendUrl%>"></i>
+                <% } %>
+                <div class="error-tip"></div>
+            </dd>
+        </dl>
+        <% if(item.type == "select-ajax-effect"){%>
+        <dl class="<%= 'J_' + item.effectProperty%> hide">
+            <dt>磁盘阵列</dt>
+            <dd>
+                <input type="text" name="<%= item.effectProperty%>"  serialize="true" ismandatory="0" escape="1" placeholder="输入资产编号,多个资产编号用,分割" class="input-text J_input">
+            </dd>
+        </dl>
+        <%}%>
+        <%}else if(item.type == "date"){%>
+        <dl class="<%= 'J_' + item.name %> dl-tip">
+            <dt class="<%= item.required ? 'required' : ''%>"><%= item.label%>：</dt>
+            <dd>
+                <input type="text" name="<%= item.name%>" labelname="<%= item.label%>" serialize="true" ismandatory="0" escape="1"  class="input-text J_calendar J_input">
+                <div class="error-tip"></div>
+            </dd>
+        </dl>
+        <%}%>
+        <%});%>
+
+        <dl class="workload-operate-box clearfix">
+            <dd>
+                <a href="javascript:void(0)"  class="search ac_searchWorkload">登记</a>
+            </dd>
+        </dl>
+        <input type="hidden" class="search-key">
+        <input type="hidden" class="search-full-key">
+    </div>
+</script>
+<script type="text/template" id="J_tpl_select">
+    <%_.each(list, function(option) {%>
+    <li class="ac_selectItem" val="<%= option.id %>"><%= option.name %></li>
+    <%});%>
+</script>
+<script type="text/template" id="J_tpl_li">
+    <li class="ac_selectItem" val="<%= name %>"><%= name %></li>
+</script>
+<script type="text/template" id="J_tpl_poup">
+    <div class="text-center">
+        <input type="text"  class="input-text reset-passwd" maxlength="20">
+    </div>
+</script>
+<script id="J_tpl_extend" type="text/template">
+    <% if(extend == "add") {%>
+    <i class="btn-add J_add" data-url="<%= extendUrl%>">+</i>
+    <% }else if(extend == "search"){ %>
+    <i class="btn-search J_input_search" data-url="<%= extendUrl%>"></i>
+    <% } %>
+</script>

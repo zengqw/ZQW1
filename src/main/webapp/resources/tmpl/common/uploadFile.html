@@ -1,0 +1,36 @@
+<script type="text/template" id="tpl_upload_wrap">
+    <div class="file-upload">
+        <ul class="file-list" id="upload_wrap">
+        </ul>
+        <button class="upload-btn"><%= uploadBtnText || '上传Excel' %></button>
+        <span id="upload_btn"></span>
+        <span class="red"><%= tips || '*导入Excel格式的文件' %></span>
+    </div>
+</script>
+<script type="text/template" id="tpl_upload_item">
+    <li class="mb5" id="<%= fileId%>">
+        <a href="javascript:void(0);" class="file-name"><%= name%></a>
+        <%if(add === true){%>
+            <span class="progress ml10"></span>
+            <a href="javascript://" class="delete-link ml10">取消上传</a>
+        <%}else{%>
+            <span class="delete-link ac_uploadDelete ml10 red">上传成功</span>
+        <%}%>
+    </li>
+</script>
+<script type="text/html" id="tpl_upload_msg">
+    <div class="upload-result-msg">
+        <p>成功条数：<strong><%- result.data.successMsg.length %></strong></p>
+        <ul>
+            <% _.each(result.data.successMsg, function(item, index){ %>
+                <li><%= item %></li>
+            <% }) %>
+        </ul>
+        <p>失败条数：<strong><%- result.data.failMsg.length %></strong></p>
+        <ul>
+            <% _.each(result.data.failMsg, function(item, index){ %>
+                <li><%= item %></li>
+            <% }) %>
+        </ul>
+    </div>
+</script>

@@ -1,0 +1,16 @@
+<table border="0" cellspacing="0" cellpadding="0">
+    <colgroup>
+        <%_.each(cols, function(w) {%>
+        <col width="<%= w %>%">
+        <%});%>
+    </colgroup>
+    <thead>
+    <tr>
+        <%_.each(theads, function(th) {%>
+        <th><%= th %></th>
+        <%});%>
+    </tr>
+    </thead>
+    <tbody>
+    </tbody>
+</table>

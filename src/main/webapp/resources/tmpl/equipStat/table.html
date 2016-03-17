@@ -1,0 +1,53 @@
+<div class="m-fixed-box" style="padding-bottom: 0;">
+    <% if (dataList && dataList.length) {%>
+    <table class="t-normal t-border t-striped fx-unit J_table">
+        <thead>
+        <tr>
+            <% var flKeys = _.filter(keyConfigs, {fixed: true}) %>
+            <% var fmKeys = _.reject(keyConfigs, {fixed: true}) %>
+            <%_.each(flKeys, function(obj){%>
+                <th rowspan="2"><%= obj.text %></th>
+            <%})%>
+
+            <%
+            _.each(themeList, function(item){
+            %>
+                <th colspan="<%= fmKeys.length%>" data-code="<%= item.typeCode%>"><%= item.typeName %></th>
+            <% });%>
+        </tr>
+        <tr>
+            <%
+            _.each(themeList, function(item){
+            %>
+                <%
+                _.each(fmKeys, function(config){
+                %>
+                    <th><%= config.text %></th>
+                <% });%>
+            <% });%>
+        </tr>
+        </thead>
+        <tbody>
+            <%
+            _.each(dataList, function(item){
+            %>
+                <tr>
+                    <%_.each(flKeys, function(config){%>
+                    <td ><%= item[config.key] %></td>
+                    <%})%>
+                    <%
+                    _.each(item.staticList, function(obj){
+                    %>
+                        <%
+                        _.each(fmKeys, function(config){
+                        %>
+                        <td><%= obj[config.key] %></td>
+                        <% });%>
+                    <% });%>
+                </tr>
+            <% });%>
+        </tbody>
+    </table>
+    <% } %>
+</div>
+<div id="system_page"></div>

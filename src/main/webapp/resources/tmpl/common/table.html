@@ -1,0 +1,17 @@
+<table width="100%" border="0" cellspacing="0" cellpadding="0" class="table table-border table-striped">
+    <colgroup>
+        <%_.each(cols, function(w) {%>
+            <col width="<%= w %>%">
+        <%});%>
+    </colgroup>
+    <thead>
+    <tr>
+        <%_.each(theads, function(th) {%>
+        <th><%= th %></th>
+        <%});%>
+    </tr>
+    </thead>
+    <tbody>
+    </tbody>
+</table>
+<div id="system_page"></div>

@@ -1,0 +1,71 @@
+<section class="inventory-setting">
+    <div class="t-stage J_stage_top">
+        <div class="l-stage">
+            <div class="t-node">
+                <i class="c-pointer">
+                </i>
+            </div>
+            <div class="line"></div>
+        </div>
+        <div class="r-stage">
+			<span>
+			请开始新一次盘点
+			</span>
+            <span class="btn-start J_start_inventory">开始盘点</span>
+        </div>
+    </div>
+    <div class="t-stage J_stage_top hide">
+        <div class="l-stage">
+            <div class="t-node">
+                <i class="c-pointer">
+                </i>
+            </div>
+        </div>
+        <div class="r-stage">
+			<span>
+			 操作已成功！盘点信息如下：
+			</span>
+            <span class="btn-end J_end_inventory" style="display:none;">结束盘点</span>
+        </div>
+    </div>
+    <ul class="J_stage_list">
+    </ul>
+</section>
+<script type="text/template" id="J_state_unit">
+
+    <% var len = data.length || 0;
+    _.each(data, function(item, index) {%>
+    <li class="clearfix stage">
+        <div>
+            <div class="l-stage">
+                <div class="node"></div>
+                <div class='<%= (index+1) !== len ? "line" : ""%>'></div>
+            </div>
+            <div class="r-stage">
+					<span>
+						起始时间
+					</span>
+                <span><%=item.beginDate%></span>
+                <span>至</span>
+                <span><%=item.endDate%></span>
+                <ul class="info-list">
+                    <li>
+                        <span>盘点部门:</span>
+                        <% if(item.department == '1') { %>
+                        <span>IT部门</span>
+                        <% }else if(item.department == '2') { %>
+                        <span>网路管理部</span>
+                        <% }else { %>
+                        <span>其他</span>
+                        <% } %>
+                    </li>
+                    <li>
+                        <span>盘点信息:</span>
+                        <span><%=item.info%></span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </li>
+    <%});%>
+</script>

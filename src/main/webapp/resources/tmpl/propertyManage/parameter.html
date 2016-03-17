@@ -1,0 +1,17 @@
+<div class="workload-data-list">
+</div>
+<div class="workload-data-footer">
+    <a href="javascript:void(0)" class="o-btn o-btn-success J_submit hide">提交</a>
+</div>
+<script type="text/template" id="J_unit_tpl">
+    <%_.each(data, function(item, index) {%>
+    <tr>
+        <td><%= index + 1 %></td>
+        <td><%=item.name%></td>
+        <td><%=item.usUseMonth %></td>
+        <td><%=item.prcUseMonth %></td>
+        <td><%=item.usScrapRate %></td>
+        <td><%=item.prcScrapRate %></td>
+    </tr>
+    <%});%>
+</script>

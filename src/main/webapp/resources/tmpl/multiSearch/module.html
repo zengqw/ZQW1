@@ -1,0 +1,45 @@
+<div class="workload-data">
+    <div class="workload-operation">
+        <div class="workload-search no-border">
+            <div class="search-form J_search_form clearfix">
+            </div>
+        </div>
+    </div>
+    <div class="workload-data-list text-center u-panel">
+        <div class="panel-header mb10 hide"> 批量查询：</div>
+        <div class="workload-data-header text-right hide J_exportWrap">
+            <a href="javascript:void(0);" data-type="search" class="icon-btn export J_export">导出excel</a>
+        </div>
+        <div class="J_searchTable text-center">
+        </div>
+    </div>
+    <div class="J_repeatIpWrap u-panel">
+        <div class="panel-header mb10 hide"> 重复IP：</div>
+        <div class="J_ipList"></div>
+        <div class="J_repeatIpTable text-center">
+        </div>
+    </div>
+</div>
+<script type="text/template" id="J_tpl_search">
+    <% _.each(list, function(obj){%>
+    <%= _.template(tpl)(_.extend(_.findWhere(data,{key: obj.key}), obj))%>
+    <% }) %>
+    <dl class="btn-item workload-operate-box">
+        <dd>
+            <a href="javascript:void(0)" class="search J_search" data-hash="#search">提交</a>
+            <a href="javascript:void(0)" class="J_repeatIp">重复IP</a>
+        </dd>
+    </dl>
+</script>
+<script id="J_tpl_repeatIp" type="text/html">
+    <div class="ip-list container-max">
+        <ul>
+            <% _.each(repeatIP, function(item, index){ %>
+            <li><%= item %></li>
+            <% }) %>
+        </ul>
+    </div>
+    <div class="workload-data-header text-right">
+        <a href="javascript:void(0);" data-type="repeat" class="icon-btn export J_export">导出excel</a>
+    </div>
+</script>

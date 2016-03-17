@@ -1,0 +1,115 @@
+<div class="m-fixed-box J_fixed_box">
+</div>
+<div class="clearfix system_page" id="system_page"></div>
+<script type="text/template" id="J_tpl_fixed_box">
+    <div class="fx-unit fx-l">
+        <table class="t-normal t-border">
+            <thead>
+            <tr>
+                <% if(needIndex){%>
+                    <th>序号</th>
+                <%}else{%>
+                    <th class="checkbox-item"><a href="javascript:void(0);" class="input-checkbox" data-type="all"></a></th>
+                <%}%>
+                <% var flKeys = _.filter(keys, {fixed: true}) %>
+                <%_.map(flKeys, function(obj){%>
+                <th><%= obj.text %></th>
+                <%})%>
+            </tr>
+            </thead>
+            <tbody>
+            <% _.each(data, function(item, index){%>
+            <tr data-id="<%= uId ? (colorControl===true ? item[uId].value : item[uId]) : ''%>">
+                <% if(needIndex){%>
+                    <td><%= continuedIndex + (index + 1)%></td>
+                <%}else{%>
+                    <td class="checkbox-item"><a href="javascript:void(0);" class="input-checkbox" data-type="item" title="当前是第<%= (1 + index) %>行"></a></td>
+                <%}%>
+
+                <%_.map(flKeys, function(obj){%>
+                    <% if (colorControl === false) { %>
+                    <td><%= item[obj.key] %></td>
+                    <% } else { %>
+                    <td style="background:<%= item[obj.key] && item[obj.key].color %>"><%=  item[obj.key] && item[obj.key].value %></td>
+                    <% } %>
+                <%})%>
+            </tr>
+            <%})%>
+            </tbody>
+        </table>
+    </div>
+    <div class="fx-unit fx-m">
+        <div class='<%= controls ? "content" : "content no-control" %>'>
+            <table class="t-normal t-border t-striped">
+                <thead>
+                <tr>
+                    <% var fmKeys = _.reject(keys, {fixed: true}) %>
+                    <%_.map(fmKeys, function(obj){%>
+                    <th><%= obj.text %></th>
+                    <%})%>
+                </tr>
+                </thead>
+                <tbody>
+                <% _.each(data, function(item){%>
+                <tr data-id="<%= uId ? (colorControl===true ? item[uId].value : item[uId]) : ''%>">
+                    <%_.map(fmKeys, function(obj){%>
+                        <% if ("text" == obj.type ){ %>
+                            <td><input type="text" name="<%= obj.key %>" serialize="true" class="input-text" value="<%= item[obj.key] %>"/></td>
+                        <% } else if("date" == obj.type ){ %>
+                            <td><input type="text" name="<%= obj.key %>" serialize="true" class="input-text J_calendar" value="<%= item[obj.key] %>"/></td>
+                        <% } else {%>
+                            <% if (colorControl === false) { %>
+                                <td><%= item[obj.key] %></td>
+                            <% } else { %>
+                                <td style="background:<%= item[obj.key] && item[obj.key].color %>"><%=  item[obj.key] && item[obj.key].value %></td>
+                            <% } %>
+                        <% } %>
+                    <%})%>
+                </tr>
+                <%})%>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <% if(controls){%>
+    <div class="fx-unit fx-r">
+        <table class="t-normal t-border">
+            <thead>
+            <tr>
+                <th><%= controls.text %></th>
+            </tr>
+            </thead>
+            <tbody>
+            <% _.each(data, function(item){%>
+            <tr data-id="<%= colorControl===true ? item[uId].value : item[uId] %>">
+                <td>
+                    <% _.each(controls.btns, function(item){%>
+                    <a href="javascript:void(0)" class="<%= item.className %>  u-btn" title="<%= item.text %>"></a>
+                    <%})%>
+                </td>
+            </tr>
+            <%})%>
+            </tbody>
+        </table>
+    </div>
+    <% } else {%>
+    <div class="fx-unit fx-r no-control">
+        <table class="t-normal t-border">
+            <thead>
+            <tr>
+                <th>&nbsp;</th>
+            </tr>
+            </thead>
+            <tbody>
+            <% _.each(data, function(item){%>
+            <tr data-id="<%= uId ? (colorControl===true ? item[uId].value : item[uId]) : ''%>">
+                <td>
+                    <span>&nbsp;</span>
+                </td>
+            </tr>
+            <%})%>
+            </tbody>
+        </table>
+    </div>
+    <% } %>
+</script>

@@ -1,0 +1,46 @@
+<div class="workload-title"></div>
+<div class="workload-data-list padding-top-2"></div>
+<script type="text/template" id="J_title_tpl">
+    <%_.each(names, function(name, index) {%>
+        <a href="javascript:void(0)" data-code="<%= name[1]%>"><%= name[0]%></a>
+    <%});%>
+</script>
+<script type="text/template" id="J_unit_tpl">
+    <table border="0" cellspacing="0" cellpadding="0" width="70%">
+        <colgroup>
+            <col width="20%">
+            <col width="60%">
+            <col width="20%">
+        </colgroup>
+        <thead>
+        <tr>
+            <th>序号</th>
+            <th>名称</th>
+            <th>操作</th>
+        </tr>
+        </thead>
+        <tbody>
+            <%_.each(propertyList, function(item, index) {%>
+            <tr  data-id="<%= item[1] %>">
+                <td><%= index + 1 %></td>
+                <td>
+                    <input type="text" class="input-text" value="<%= item[0]%>"/>
+                </td>
+                <td>
+                    <a href="javascript:void(0)" class="btn_icon btn-edit"   data-id="<%= item[1] %>"></a>
+                    <a href="javascript:void(0)" class="btn_icon btn-delete" data-id="<%= item[1] %>"></a>
+                </td>
+            </tr>
+            <%});%>
+            <tr>
+                <td></td>
+                <td>
+                    <input type="text" class="input-text" value=""/>
+                </td>
+                <td>
+                    <a href="javascript:void(0)" class="btn_icon btn-add"></a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</script>

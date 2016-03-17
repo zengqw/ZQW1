@@ -1,0 +1,26 @@
+<div class="budget-page" pages="<%=pages%>" size="<%=size%>">
+	<div class="size">
+		<em>每页<%=size%>条</em>
+		<div class="size-list">
+		<ul>
+			<% for(var i=1; i<=5; i++) { %>
+				<li class="ac_changePageSize<% if(i*10 == size) { %> hover<% } %>" index="<%=i*10%>">每页<%=i*10%>条</li>
+			<% } %>
+		</ul>
+		</div>
+	</div>
+	<div class="total ac_showPageBox">
+		<em><%=current%>/<%=pages%></em>
+		<div class="page-list">
+		<ul>
+		<% for(var i=1; i<=pages; i++) { %>
+			<li  <% if(current==i) { %> class="current" <% } %> index="<%=i%>" >
+				<a href="#" class="ac_changePage"><%=i%>/<%=pages%></a>
+			</li>
+		<% } %>
+		</ul>
+		</div>
+	</div>
+	<a href="#" class="prev <% if(current == 1) { %>prev-disabled <% } %>ac_changePage" srv="prev"></a>
+	<a href="#" class="next <% if(current ==pages) { %>next-disabled <% } %>ac_changePage" srv="next"></a>
+</div>

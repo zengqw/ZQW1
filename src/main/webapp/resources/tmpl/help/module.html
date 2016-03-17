@@ -1,0 +1,31 @@
+<div class="workload-data">
+    <div class="workload-data-list"></div>
+</div>
+<script type="text/template" id="J_tpl_help">
+        <ul class="help-list">
+            <% _.each(data, function(obj){%>
+            <li class="help-item">
+                <% if(obj.list.length) {%>
+                    <h3 class="title"><%= obj.title%></h3>
+                    <ul>
+                    <% _.each(obj.list, function(item, index){%>
+                        <li>
+                            <div><%= index+1 %>、<%= item.text %></div>
+                            <% if(item.children && item.children.length) {%>
+                            <ul>
+                                <% _.each(item.children, function(child){%>
+                                <li>
+                                    <div>* <%= child.text %></div>
+
+                                </li>
+                                <% }) %>
+                            </ul>
+                            <% } %>
+                        </li>
+                    <% }) %>
+                    </ul>
+                <% } %>
+            </li>
+            <% }) %>
+        </ul>
+</script>

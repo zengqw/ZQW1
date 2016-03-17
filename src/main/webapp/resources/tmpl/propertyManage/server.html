@@ -1,0 +1,28 @@
+<div class="workload-data-list tables-manage clearfix">
+    <div class="inline-block table-item fl fixed init-table" data-type="brand"></div>
+    <div class="inline-block table-item table-bg-one fl fixed room-table hide" data-type="type"></div>
+    <div class="inline-block table-item table-bg-two fl fixed rank-table hide" data-type="model"></div>
+</div>
+<script type="text/template" id="J_unit_tpl">
+    <%_.each(list, function(item, index) {%>
+    <tr class="tr-item" data-type="<%= type %>" data-id="<%= item.id %>">
+        <td><%= index + 1 %></td>
+        <td>
+            <input type="text" class="input-text" value="<%= item.name%>"/>
+        </td>
+        <td>
+            <a href="javascript:void(0)" class="btn_icon btn-edit"   data-id="<%= item.id %>"></a>
+            <a href="javascript:void(0)" class="btn_icon btn-delete" data-id="<%= item.id %>"></a>
+        </td>
+    </tr>
+    <%});%>
+    <tr data-type="<%= type %>">
+        <td></td>
+        <td>
+            <input type="text" class="input-text" value=""/>
+        </td>
+        <td>
+            <a href="javascript:void(0)" class="btn_icon btn-add"></a>
+        </td>
+    </tr>
+</script>

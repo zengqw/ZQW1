@@ -1,0 +1,171 @@
+@charset "UTF-8";
+//== 清浮
+.clearfix() {
+  clear: both ;
+  &:before,
+  &:after {
+    content : " ";
+    display : table;
+  }
+  &:after {
+    clear : both;
+  }
+}
+
+//== 不透明度
+.opacity(@opacity) {
+  opacity : @opacity;
+  @opacity-ie: (@opacity * 100);
+  filter  : ~"alpha(opacity=@{opacity-ie})";
+}
+
+//== 文字隐藏
+.text-hide() {
+  font             : ~"0/0" a;
+  color            : transparent;
+  text-shadow      : none;
+  background-color : transparent;
+  border           : 0;
+}
+
+//== 不换行省略号
+.text-overflow() {
+  overflow      : hidden;
+  text-overflow : ellipsis;
+  white-space   : nowrap;
+}
+
+//== 实心三角
+.triangle(@size:5px,@color:#8D8D8D,@state:top) {
+  display               : inline-block;
+  width                 : 0;
+  height                : 0;
+  overflow              : hidden;
+  border                : @size solid transparent;
+  border-@{state}-color : @color;
+}
+
+//== 快捷方法
+.size(@width; @height) {
+  width  : @width;
+  height : @height;
+}
+
+.square(@size) {
+  .size(@size; @size);
+}
+
+//== CSS3
+.box-shadow(@shadow) {
+  -webkit-box-shadow : @shadow;
+  box-shadow         : @shadow;
+}
+
+.user-select(@select) {
+  -webkit-user-select : @select;
+  -moz-user-select    : @select;
+  -ms-user-select     : @select; // IE10+
+  user-select         : @select;
+}
+
+.transition (@property: all, @duration : .5s, @timing-function : ease-out, @delay : 0s) {
+  -webkit-transition: @property @duration @timing-function @delay;
+  -moz-transition: @property @duration @timing-function @delay;
+  -o-transition: @property @duration @timing-function @delay;
+  -ms-transition: @property @duration @timing-function @delay;
+  transition: @property @duration @timing-function @delay;
+}
+
+//== Buttons LESS
+.button-variant(@color:@btn-default-color; @background:@btn-default-bg; @border:@btn-default-border) {
+  color            : @color;
+  background-color : @background;
+  border-color     : @border;
+
+  &:focus,
+  &.focus {
+    color            : @color;
+    background-color : darken(@background, 5%);
+    border-color     : darken(@border, 10%);
+  }
+
+  &:hover,
+  &:active,
+  &.active {
+    color            : @color;
+    background-color : darken(@background, 5%);
+    border-color     : darken(@border, 7%);
+  }
+
+  &:active,
+  &.active,
+  &.disabled,
+  &[disabled] {
+    &:hover,
+    &:focus,
+    &.focus,
+    &:active,
+    &.active {
+      background-color : @background;
+      border-color     : @border;
+    }
+  }
+}
+
+// Button sizes
+.button-size(@padding-vertical:4px; @padding-horizontal:15px; @font-size:@font-size-base; @line-height:@line-height-base; @border-radius:0px) {
+  padding       : @padding-vertical @padding-horizontal;
+  font-size     : @font-size;
+  line-height   : @line-height;
+  border-radius : @border-radius;
+}
+
+// Table LESS
+.table-row-variant(@state; @background) {
+  // Exact selectors below required to override `.table-striped` and prevent
+  // inheritance to nested tables.
+  .table > thead > tr,
+  .table > tbody > tr,
+  .table > tfoot > tr {
+    > td.@{state},
+    > th.@{state},
+    &.@{state} > td,
+    &.@{state} > th {
+      background-color : @background;
+    }
+  }
+
+  // Hover states for `.table-hover`
+  // Note: this is not available for cells or rows within `thead` or `tfoot`.
+  .table-hover > tbody > tr {
+    > td.@{state}:hover,
+    > th.@{state}:hover,
+    &.@{state}:hover > td,
+    &:hover > .@{state},
+    &.@{state}:hover > th {
+      background-color : darken(@background, 5%);
+    }
+  }
+}
+
+//Form
+.setLabelWidth(@width:120px) {
+  .form-group {
+    > .hd {
+      width       : @width;
+    }
+  }
+}
+
+.border-radius(@radius:0px) {
+  -webkit-border-radius : @radius;
+  -moz-border-radius    : @radius;
+  -o-border-radius      : @radius;
+  -moz-border-radius    : @radius;
+  border-radius         : @radius;
+}
+
+.delay(@time: 0s) {
+  -webkit-animation-delay: @time;
+  animation-delay: @time;
+}

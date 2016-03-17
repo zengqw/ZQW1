@@ -1,0 +1,449 @@
+<div class="workload-data ams-view">
+    <div class="workload-operation">
+        <div class="show-search show-search-hover">搜索</div>
+        <div class="workload-search">
+            <i class="arrow"></i>
+            <div class="search-form clearfix">
+                <dl>
+                    <dt>盘点状态：</dt>
+                    <dd>
+                        <div class="select-box">
+                            <em class="ac_selectBox">请选择</em>
+                            <ul class="select-auto">
+                                <li class="ac_selectItem" val>请选择</li>
+                                <li class="ac_selectItem" val="0">未确认</li>
+                                <li class="ac_selectItem" val="1">正常</li>
+                                <li class="ac_selectItem" val="2">有误</li>
+                                <li class="ac_selectItem" val="3">盘亏</li>
+                                <li class="ac_selectItem" val="4">新增</li>
+                            </ul>
+                            <input type="hidden" name="status" labelname="填写状态" serialize="true" ismandatory="0" escape="0" value="" class="select-value">
+                        </div>
+                    </dd>
+                </dl>
+                <dl>
+                    <dt>盘点年份：</dt>
+                    <dd>
+                        <div class="select-box">
+                            <em class="ac_selectBox">请选择</em>
+                            <ul class="select-auto">
+                                <li class="ac_selectItem" val>请选择</li>
+                                <li class="ac_selectItem" val="2014">2014</li>
+                                <li class="ac_selectItem" val="2015">2015</li>
+                            </ul>
+                            <input type="hidden" name="year" labelname="填写状态" serialize="true" ismandatory="0" escape="0" value="" class="select-value">
+                        </div>
+                    </dd>
+                </dl>
+                <dl>
+                    <dt>一级部门：</dt>
+                    <dd>
+                        <div class="select-box">
+                            <em class="ac_selectBox">请选择</em>
+                            <ul class="select-auto J_dept_first">
+                            </ul>
+                            <input type="hidden" name="primaryDepartmentId" labelname="填写状态" serialize="true" ismandatory="0" escape="0" value="" class="select-value">
+                        </div>
+                    </dd>
+                </dl>
+                <dl>
+                    <dt>二级部门：</dt>
+                    <dd>
+                        <div class="select-box">
+                            <em class="ac_selectBox">请选择</em>
+                            <ul class="select-auto J_dept_second">
+                            </ul>
+                            <input type="hidden" name="secondaryDepartment" labelname="填写状态" serialize="true" ismandatory="0" escape="0" value="" class="select-value">
+                        </div>
+                    </dd>
+                </dl>
+                <dl>
+                    <dt>使用状态：</dt>
+                    <dd>
+                        <div class="select-box">
+                            <em class="ac_selectBox">请选择</em>
+                            <ul class="select-auto">
+                                <li class="ac_selectItem" val>请选择</li>
+                                <li class="ac_selectItem" val="使用">使用</li>
+                                <li class="ac_selectItem" val="备用">备用</li>
+                                <li class="ac_selectItem" val="报废">报废</li>
+                                <li class="ac_selectItem" val="维修">维修</li>
+                                <li class="ac_selectItem" val="借出">借出</li>
+                                <li class="ac_selectItem" val="停用">停用</li>
+                                <li class="ac_selectItem" val="故障">故障</li>
+                            </ul>
+                            <input type="hidden" name="userStatus" labelname="填写状态" serialize="true" ismandatory="0" escape="0" value="" class="select-value">
+                        </div>
+                    </dd>
+                </dl>
+                <dl>
+                    <dt>资产状态：</dt>
+                    <dd>
+                        <div class="select-box">
+                            <em class="ac_selectBox">请选择</em>
+                            <ul class="select-auto">
+                                <li class="ac_selectItem" val>请选择</li>
+                                <li class="ac_selectItem" val="入库">入库</li>
+                                <li class="ac_selectItem" val="待确认">待确认</li>
+                                <li class="ac_selectItem" val="已确认">已确认</li>
+                                <li class="ac_selectItem" val="转移">转移</li>
+                                <li class="ac_selectItem" val="待入库">待入库</li>
+                            </ul>
+                            <input type="hidden" name="assetsStatus" labelname="填写状态" serialize="true" ismandatory="0" escape="0" value="" class="select-value">
+                        </div>
+                    </dd>
+                </dl>
+                <dl>
+                    <dt>地点名称：</dt>
+                    <dd>
+                        <div class="select-box">
+                            <em class="ac_selectBox">请选择</em>
+                            <ul class="select-auto">
+                                <li class="ac_selectItem" val>请选择</li>
+                                <li class="ac_selectItem" val="广州">广州</li>
+                                <li class="ac_selectItem" val="北京">北京</li>
+                                <li class="ac_selectItem" val="上海">上海</li>
+                                <li class="ac_selectItem" val="杭州">杭州</li>
+                                <li class="ac_selectItem" val="韩国">韩国</li>
+                                <li class="ac_selectItem" val="旧金山">旧金山</li>
+                                <li class="ac_selectItem" val="美国">美国</li>
+                                <li class="ac_selectItem" val="首尔">首尔</li>
+                                <li class="ac_selectItem" val="游戏驻外">游戏驻外</li>
+                            </ul>
+                            <input type="hidden" name="standby2" labelname="填写状态" serialize="true" ismandatory="0" escape="0" value="" class="select-value">
+                        </div>
+                    </dd>
+                </dl>
+                <dl>
+                    <dt>资产编号：</dt>
+                    <dd><input type="text" name="assetsSn" labelname="资产编号" serialize="true" ismandatory="0" escape="1" placeholder="请输入资产编号关键字" class="input-text"></dd>
+                </dl>
+                <dl>
+                    <dt>资产所属公司：</dt>
+                    <dd><input type="text" name="assetsCompany" labelname="资产所属公司" serialize="true" ismandatory="0" escape="1" placeholder="请输入资产所属公司关键字" class="input-text"></dd>
+                </dl>
+                <dl>
+                    <dt>资产用途：</dt>
+                    <dd><input type="text" name="useAssetsUse" labelname="资产用途" serialize="true" ismandatory="0" escape="1" placeholder="请输入资产用途关键字" class="input-text"></dd>
+                </dl>
+                <dl>
+                    <dt>姓名：</dt>
+                    <dd><input type="text" name="useUser" labelname="姓名" serialize="true" ismandatory="0" escape="1" placeholder="请输入姓名关键字" class="input-text"></dd>
+                </dl>
+                <dl>
+                    <dt>工号：</dt>
+                    <dd><input type="text" name="employeeCode" labelname="工号" serialize="true" ismandatory="0" escape="1" placeholder="请输入工号关键字" class="input-text"></dd>
+                </dl>
+                <dl>
+                    <dt>邮箱：</dt>
+                    <dd><input type="text" name="email" labelname="邮箱" serialize="true" ismandatory="0" escape="1" placeholder="请输入邮箱关键字" class="input-text"></dd>
+                </dl>
+                <dl>
+                    <dt>配置型号：</dt>
+                    <dd><input type="text" name="confModel" labelname="配置型号" serialize="true" ismandatory="0" escape="1" placeholder="请输入配置型号关键字" class="input-text"></dd>
+                </dl>
+                <dl class="btn-item checkbox-container J_equipments">
+                </dl>
+                <dl class="btn-item workload-operate-box">
+                    <dd>
+                        <a href="#search"  class="search ac_searchWorkload" data-hash="#search">搜索</a>
+                        <a href="#search"  class="reset-search J_reset_search" data-hash="#search">清除</a>
+                        <a href="#search" class="clear J_clear_chked chked" data-type="clear" title="清除搜索条件">取消全选</a>
+                    </dd>
+                </dl>
+                <input type="hidden" class="search-key">
+                <input type="hidden" class="search-full-key">
+            </div>
+        </div>
+    </div>
+    <div class="workload-data-list">
+        <div class="workload-operation ams-operation-container">
+            <div class="filter-operate-box">
+                <span class="filter-item J_type active" data-type="1">全部</span>
+                <span class="filter-item J_type" data-type="2">已盘点</span>
+                <span class="filter-item J_type" data-type="3">未盘点</span>
+            </div>
+            <div class="workload-operate-box">
+                <a href="#search" class="msg ac_postNotice J_ams_notify" data-type="all">未盘点提醒</a>
+                <a href="#search" class="submit ac_submitWorkload J_multi_modify" data-type="1">批量修改</a>
+                <a href="#search" class="export ac_exportExcel J_ams_exportExcel" data-type="multi">导出</a>
+            </div>
+        </div>
+        <table width="100%" border="0" cellspacing="0" cellpadding="0">
+            <colgroup>
+                <col width="3%">
+                <col width="3%">
+                <col width="5%">
+                <col width="5%">
+                <col width="5%">
+                <col width="10%">
+                <col width="4%">
+                <col width="5%">
+                <col width="8%">
+                <col width="4%">
+                <col width="8%">
+                <col width="18%">
+                <col width="9%">
+                <col width="4%">
+                <col width="8%">
+            </colgroup>
+            <thead>
+            <tr>
+                <th class="checkbox-item"><a href="#" class="input-checkbox" data-type="all"></a></th>
+                <th class="name-item">序列</th>
+                <th>资产编号</th>
+                <th>资产名称</th>
+                <th>配置型号</th>
+                <th>资产用途</th>
+                <th class="operate-item">
+                    <a href="#search" class="view J_view_all">查看</a>
+                </th>
+                <th class="user-item">姓名（工号）</th>
+                <th class="user-item">使用者邮箱</th>
+                <th>地点名称</th>
+                <th>盘点地点</th>
+                <th>问题描述</th>
+                <th>处理结果</th>
+                <th>盘点状态</th>
+                <th>员工确认时间</th>
+            </tr>
+            </thead>
+            <tbody class="J_table_body">
+            </tbody>
+        </table>
+        <div id="system_page" class="text-center"></div>
+    </div>
+    <div class="workload-data-footer"></div>
+</div>
+<div class="overlay J_overlay" ng-class="{active:loading.active}">&nbsp;</div>
+<script type="text/template" id="J_equip_unit">
+    <%_.each(data, function(item) {%>
+    <dd>
+		<span>
+			<a href="#" class="input-checkbox input-checkbox-hover" data-type="item" data-id="<%=item[0]%>">
+                <%=item[1]%>
+            </a>
+		</span>
+    </dd>
+    <%});%>
+</script>
+<script type="text/template" id="J_dept_unit">
+    <li class="select-search-input clearfix"><input type="text" class="input-text ac_select-search-input" placeholder="输入并自动搜索"/></li>
+    <li class="ac_selectItem" val>请选择</li>
+    <%_.each(data, function(item) {%>
+    <li class="ac_selectItem" val="<%=item.depid%>"><%=item.depname%></li>
+    <%});%>
+</script>
+<script type="text/template" id="J_enventory_unit">
+    <%_.each(data, function(item, index) {%>
+    <tr data-detail-id="<%=item.detailId%>">
+        <td class="checkbox-item"><a href="#" class="input-checkbox" data-type="item" data-detail-id="<%=item.detailId%>" data-email="<%=item.email%>"></a></td>
+        <td class="name-item"><%=index + 1%></td>
+        <td class="pointer J_modify_inventory" data-index="<%=index%>" data-detail-id="<%=item.detailId%>">
+            <a class="href-btn"><%=item.assetsSn%></a>
+        </td>
+
+        <td><span class="hot"><%=item.typeName%></span></td>
+        <td><span class="hot"><%=item.confModel%></span></td>
+        <td><%=item.useAssetsUse%></td>
+        <td class="operate-item operate-view">
+            <a href="#search" class="view J_view" data-view-id="<%=index + 1%>">查看</a>
+            <div class="hover-arrow J_hide_view hide" data-view-id="<%=index + 1%>"></div>
+        </td>
+
+        <td class="user-item"><%= item.useUser %>(<%=item.employeeCode%>)</td>
+        <td class="user-item"><%=item.email%></td>
+        <td class="user-item"><%=item.standby2%></td>
+        <td><%=item.address%></td>
+        <td class="J_problemContents"><%=item.problemContents%></td>
+        <td class="J_problemResult"><%=item.problemResult%></td>
+        <td class="J_checkstatus"><%=item.checkstatus%></td>
+        <td><%=item.userConfirmTime%></td>
+    </tr>
+    <tr class="user-item user-item-hover J_hide_view hide" data-view-id="<%=index + 1%>">
+        <td colspan="15">
+            <div class="hover-top">配置：<%=item.confText%></div>
+            <div class="hover-item">
+                <div>光驱:
+                    <span><%=item.confCdrom%></span>
+                </div>
+                <div>CPU：<%=item.confCpu%></div>
+            </div>
+            <div class="hover-item">
+                <div>显卡：<%=item.confDisplay%></div>
+                <div>硬盘：<%=item.confHarddisk%></div>
+            </div>
+            <div class="hover-item">
+                <div>内存：<%=item.confMem%></div>
+                <div>网卡：<%=item.confNetcard%></div>
+            </div>
+            <div class="hover-item">
+                <div>service:<%=item.confStandby1%></div>
+                <div>使用状态：<%=item.status%></div>
+            </div>
+        </td>
+    </tr>
+    <%});%>
+</script>
+<script type="text/template" id="J_enventory_info_tpl">
+    <div class="ams-title">资产信息</div>
+    <div class="ams-body J_info_content">
+        <dl>
+            <dt>资产编号：</dt>
+            <dd>
+                <span><%=assetsSn%></span>
+            </dd>
+        </dl>
+        <dl>
+            <dt>资产名称：</dt>
+            <dd>
+                <span><%=typeName%></span>
+            </dd>
+        </dl>
+        <dl>
+            <dt>配置型号：</dt>
+            <dd>
+                <span><%=confModel%></span>
+            </dd>
+        </dl>
+        <dl>
+            <dt>资产用途：</dt>
+            <dd>
+                <span><%=useAssetsUse%></span>
+            </dd>
+        </dl>
+        <dl>
+            <dt>员工号：</dt>
+            <dd>
+                <span><%=employeeCode%></span>
+            </dd>
+        </dl>
+        <dl>
+            <dt>使用者邮箱：</dt>
+            <dd>
+                <span><%=email%></span>
+            </dd>
+        </dl>
+        <dl>
+            <dt>地点名称：</dt>
+            <dd>
+                <span><%=standby2%></span>
+            </dd>
+        </dl>
+        <dl>
+            <dt>盘点地点：</dt>
+            <dd>
+                <span><%=address%></span>
+            </dd>
+        </dl>
+        <dl>
+            <dt>处理结果：</dt>
+            <dd>
+                <span><%=problemResult%></span>
+            </dd>
+        </dl>
+        <dl>
+            <dt>盘点状态：</dt>
+            <dd>
+                <span><%=checkstatus%></span>
+            </dd>
+        </dl>
+        <dl>
+            <dt>配置：</dt>
+            <dd>
+                <span><%=confText%></span>
+            </dd>
+        </dl>
+        <dl>
+            <dt>光驱：</dt>
+            <dd>
+                <span><%=confCdrom%></span>
+            </dd>
+        </dl>
+        <dl>
+            <dt>CPU：</dt>
+            <dd>
+                <span><%=confCpu%></span>
+            </dd>
+        </dl>
+        <dl>
+            <dt>显卡：</dt>
+            <dd>
+                <span><%=confDisplay%></span>
+            </dd>
+        </dl>
+        <dl>
+            <dt>硬盘：</dt>
+            <dd>
+                <span><%=confHarddisk%></span>
+            </dd>
+        </dl>
+        <dl>
+            <dt>内存：</dt>
+            <dd>
+                <span><%=confMem%></span>
+            </dd>
+        </dl>
+        <dl>
+            <dt>网卡：</dt>
+            <dd>
+                <span><%=confNetcard%></span>
+            </dd>
+        </dl>
+        <dl>
+            <dt>service：</dt>
+            <dd>
+                <span><%=confStandby1%></span>
+            </dd>
+        </dl>
+        <dl>
+            <dt>使用状态：</dt>
+            <dd>
+                <span><%=status%></span>
+            </dd>
+        </dl>
+        <dl>
+            <dt>员工确认时间：</dt>
+            <dd>
+                <span><%=userConfirmTime%></span>
+            </dd>
+        </dl>
+    </div>
+</script>
+<script type="text/template" id="J_enventory_tip_tpl">
+    <div class="modify-unit margin-top">
+        <dt>盘点状态：</dt>
+        <dd>
+            <span><%= checkstatus %></span>
+        </dd>
+    </div>
+    <div class="modify-unit">
+        <dt>使用者描述：</dt>
+        <dd class="scroll-y-48">
+            <span><%= problemContents %></span>
+        </dd>
+    </div>
+</script>
+<script type="text/template" id="J_multi_enventory_tip_tpl">
+    <div class="notify-header">
+			<span>
+				已选择
+			</span>
+			<span>
+				<%= num %>
+			</span>
+			<span>
+				个资产
+			</span>
+    </div>
+</script>
+<script type="text/template" id="J_notify_unit">
+    <%_.each(data, function(item, index) {%>
+    <tr>
+        <td><%=item.useUser%></td>
+        <td><%=item.email%></td>
+        <td><%=item.standby2%></td>
+        <td><%=item.useAssetsUse%></td>
+    </tr>
+    <%});%>
+</script>

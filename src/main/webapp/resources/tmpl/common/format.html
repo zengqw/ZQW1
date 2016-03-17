@@ -1,0 +1,203 @@
+<!--
+    {
+        label : "财务类型",                 //属性名
+        key: "FinanceType",                //属性保存数据库对应的key
+        type  : "checkGroup"               //属性类型，根据类型适配不同的模板, 分别有文本输入text, 复选框组checkGroup, 单选组radioGroup, 下拉组select, 日期date, 年月选择器monthPicker
+        required:true                      //必填项 true or false
+        value:"01"                         //值
+    }
+-->
+<% if("text" === type) {%>
+<dl class="J_<%= key %> dl-tip">
+    <dt class='<%= required ? "required" : ""%>'><%= label %>：</dt>
+    <dd>
+        <input type="text" name="<%= key %>" serialize="true" ismandatory="0" escape="1" value="<%= value %>" class="input-text J_input" <%= disabled === true ? 'disabled': '' %> />
+
+        <div class="error-tip J_errorTip"></div>
+    </dd>
+</dl>
+<% } else if("textarea" === type) {%>
+<dl class="J_<%= key %> dl-tip">
+    <dt class='<%= required ? "required" : ""%>'><%= label %>：</dt>
+    <dd>
+        <textarea type="text" name="<%= key %>" serialize="true" ismandatory="0" escape="1" value="<%= value %>" class="input-text J_input" placeholder="<%= placeHolder || ''%>" />
+        <div class="error-tip"></div>
+    </dd>
+</dl>
+<% } else if("checkbox" === type) {%>
+<dl class="u-checkbox-list J_<%= key %> ac-checkbox-list dl-tip">
+    <dt class='<%= required ? "required" : ""%>'><%= label %>：</dt>
+    <dd>
+        <div>
+            <span class="item-checkbox">
+               <a href="javascript:void(0)" data-type="single"
+                  class='<%= value ? "input-checkbox input-checkbox-hover": "input-checkbox"%>'
+                  data-value="<%= value %>">
+               </a>
+            </span>
+        </div>
+        <input type="hidden" name="<%= key %>" serialize="true" ismandatory="0" escape="0" value="<%= value %>">
+        <div class="error-tip"></div>
+    </dd>
+</dl>
+<% } else if ("checkboxGroup" === type ) {
+var len = value.length;
+var chkedArrs = _.reduce(value, function(ret, item){
+ item.checked == true && ret.push(item.value);
+return ret;
+}, []) || [];
+var chkedLen = chkedArrs.length;
+var chkedVal = chkedArrs.join(",");
+%>
+<dl class="u-checkbox-list J_<%= key %> ac-checkbox-list dl-tip">
+    <dt class='<%= required ? "required" : ""%>'><%= label %>：</dt>
+    <dd>
+        <div>
+            <span class="item-checkbox">
+                <a href="javascript:void(0)"
+                   class='<%= len && chkedLen == len ? "input-checkbox input-checkbox-hover": "input-checkbox"%>'
+                   data-type="all">全选</a>
+            </span>
+        </div>
+        <div class="clearfix"></div>
+        <% _.each(value, function(item){%>
+            <span class="item-checkbox">
+               <a href="javascript:void(0)" data-type="item"
+                  class='<%= item.checked ? "input-checkbox input-checkbox-hover": "input-checkbox"%>'
+                  data-value="<%= item.value%>">
+                   <%= item.text %>
+               </a>
+            </span>
+        <%})%>
+        <input type="hidden" name="<%= key %>" serialize="true" ismandatory="0" escape="0" value="<%= chkedVal %>" class="J_input">
+
+        <div class="error-tip"></div>
+    </dd>
+</dl>
+<% } else if ("radioGroup" === type ) {
+var chkedObj = _.findWhere(value, {checked : true});
+var chkedVal = chkedObj ? chkedObj.value : "";
+%>
+<dl class="u-radiobox-list J_<%= key %> ac-radiobox-list dl-tip">
+    <dt class='<%= required ? "required" : ""%>'><%= label %>：</dt>
+    <dd>
+        <% _.each(value, function(item){%>
+            <span class="item-radio">
+               <a href="javascript:void(0)" data-type="item"
+                  class='<%= item.checked ? "input-radio input-radio-hover": "input-radio"%>'
+                  data-value="<%= item.value%>">
+                   <%= item.text %>
+               </a>
+            </span>
+        <%})%>
+        <input type="hidden" name="<%= key %>" serialize="true" ismandatory="0" escape="0" value="<%= chkedVal %>">
+
+        <div class="error-tip"></div>
+    </dd>
+</dl>
+<% } else if("select-edit" === type) {%>
+<dl class="J_<%= key %> dl-tip">
+    <dt class='<%= required ? "required" : ""%>'><%= label %>：</dt>
+    <dd>
+            <div class="select-box">
+                <input type="text" name="<%= key %>" labelname="<%= label %>" serialize="true" ismandatory="0" escape="0" value="" class="select-value J_input J_input_<%= key%> input-text ac_selectBox_edit">
+                <ul class="select-auto">
+                    <% _.each(value, function(item){%>
+                    <li class="ac_selectItem" val="<%= item.value%>"><%= item.text %></li>
+                    <%})%>
+                </ul>
+            </div>
+        <div class="error-tip"></div>
+        </dd>
+    </dl>
+<% } else if("select" === type) {%>
+<% var chainClassName = arguments[0].chain && arguments[0].chain === true ? 'J_select_chain' : '';
+   var chkedObj = value.length ? _.findWhere(value, {checked: true}) : null;
+   var chkedValue = chkedObj ? chkedObj.value: "";
+   var chkedText = chkedObj ? chkedObj.text: "请选择";
+   var maxLength = 10;
+%>
+<dl class="J_<%= key %> dl-tip <%- chainClassName %>">
+    <dt class='<%= required ? "required" : ""%>'><%= label %>：</dt>
+    <dd>
+        <div class="select-box">
+            <em class="ac_selectBox"><%= chkedText %></em>
+            <ul class="select-auto">
+                <% if(value && value.length > maxLength) { %>
+                <li class="select-search-input clearfix"><input type="text" class="input-text ac_select-search-input" placeholder="输入并自动搜索"/></li>
+                <% } %>
+                <% _.each(value, function(item){%>
+                <li class='<%= item.checked ? "ac_selectItem hover" : "ac_selectItem"%>' data-id="<%= item.brandid ? item.brandid : '' %>" val="<%= item.value%>"><%= item.text %></li>
+                <%})%>
+            </ul>
+            <input type="hidden" name="<%= key %>" labelname="" serialize="true" ismandatory="0" escape="0" value="<%= chkedValue %>"
+                   class="select-value J_input">
+        </div>
+        <div class="error-tip J_errorTip"></div>
+    </dd>
+</dl>
+<%} else if("date" === type) {%>
+<dl class="J_<%= key %> dl-tip">
+    <dt class='<%= required ? "required" : ""%>'><%= label %>：</dt>
+    <dd>
+        <input type="text" name="<%= key %>" serialize="true" ismandatory="0" escape="1" value="<%= value %>"
+               class="input-text J_calendar J_input">
+
+        <div class="error-tip"></div>
+    </dd>
+</dl>
+<%} else if("monthPicker" === type) {%>
+<dl class="J_<%= key %> dl-tip">
+    <dt class='<%= required ? "required" : ""%>'><%= label %>：</dt>
+    <dd>
+        <input type="text" name="<%= key %>" serialize="true" ismandatory="0" escape="1" value="<%= value %>"
+               class="input-text J_calendar_month J_input">
+
+        <div class="error-tip"></div>
+    </dd>
+</dl>
+<% } else if("panel" === type) {%>
+<div id="<%= key %>" class="u-panel J_<%= key %> dl-tip">
+    <div class="panel-header" style="<%= style %>" > <%= label %>：</div>
+    <ul class="panel-body">
+        <% _.each(value, function(item){%>
+        <li class="item">
+            <span>
+                <%= item.text %>
+            </span>
+        </li>
+        <%})%>
+    </ul>
+</div>
+<% } else if("tree" === type) {%>
+<dl class="J_<%= key %> dl-tip dl-tree">
+    <dt class='<%= required ? "required" : ""%>'><%= label %>：</dt>
+    <dd>
+        <ul class="tree-wrap">
+            <li class="tree-main active">
+                <i class="tree-fold tree-fold-show J_tree_fold"></i>
+                <span class="checkbox-imitation J_tree_checkbox" data-deptid="<%- value.value %>"><%- value.text %></span>
+                <% (function traverse(obj) { %>
+                    <% if(obj.children && obj.children.length) { %>
+                        <% _.each(obj.children, function(item, index) { %>
+                            <ul class="tree-mid">
+                                <li class="tree-sub <%- item.children && item.children.length ? 'active' : '' %>">
+                                    <i class="tree-fold tree-fold-show J_tree_fold"></i>
+                                    <span class="checkbox-imitation J_tree_checkbox" data-deptid="<%- item.value %>"><%- item.text %></span>
+                                    <% traverse(item) %>
+                                </li>
+                            </ul>
+                        <% }) %>
+                    <% } %>
+                <% })(value) %>
+            </li>
+        </ul>
+        <input type="hidden" name="<%= key %>" serialize="true" ismandatory="0" escape="0" value="" class="J_tree_input">
+        <div class="error-tip"></div>
+    </dd>
+</dl>
+<% } else if("link" === type) {%>
+    <div class="link-item">
+        <a href="<%= value%>"><%= label %></a>
+    </div>
+<% } %>

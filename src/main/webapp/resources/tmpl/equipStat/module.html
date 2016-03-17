@@ -1,0 +1,40 @@
+<div class="workload-data">
+    <div class="workload-operation">
+        <div class="show-search show-search-hover">搜索</div>
+        <div class="workload-search">
+            <i class="arrow"></i>
+            <div class="search-form J_search_form clearfix">
+            </div>
+        </div>
+    </div>
+    <div class="workload-data-list text-center"></div>
+</div>
+<script type="text/template" id="J_tpl_search">
+    <% _.each(list, function(obj){%>
+    <%= _.template(tpl)(_.extend(obj, _.findWhere(data,{key: obj.key})))%>
+    <% }) %>
+    <dl class="btn-item workload-operate-box">
+        <dd>
+            <a href="#search" class="<%= isExport ? 'icon-btn export  J_search' : 'search J_search'%>" data-hash="#search"><%= isExport ? "导出" : "搜索" %></a>
+        </dd>
+    </dl>
+</script>
+<!-- Tpl for transfer -->
+<script id="J_tpl_transfer" type="text/html">
+<div class="data-list-one">
+    <h2>转移资产信息（USGAAP）</h2>
+    <div class="list-wrap"></div>
+</div>
+<div class="data-list-two">
+    <h2>转移资产信息（PRCGAAP）</h2>
+    <div class="list-wrap"></div>
+</div>
+</script>
+<!-- Tpl for depsearch -->
+<script id="J_tpl_depsearch" type="text/html">
+    <dl class="btn-item mb15">
+        <dd>
+            <a href="javascript:void(0);" class="icon-btn export J_exportBtn" data-hash="#search">导出excel</a>
+        </dd>
+    </dl>
+</script>
