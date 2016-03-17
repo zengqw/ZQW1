@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:util="http://www.springframework.org/schema/util"
+	xsi:schemaLocation="
+        http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd
+        http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
+	<context:annotation-config/>
+    <!-- Scan packages for Spring annotations -->
+    <!-- Spring AOP auto-proxy creation (required to support Shiro annotations) -->
+    <bean class="org.springframework.aop.framework.autoproxy.DefaultAdvisorAutoProxyCreator"/>
+    <!-- =========================================================
+         Shiro Components
+         ========================================================= -->
+    <!-- Shiro's main business-tier object for web-enabled applications
+         (use org.apache.shiro.web.mgt.DefaultWebSecurityManager instead when there is no web environment)
+    <bean id="sessionManager" class="org.apache.shiro.web.session.mgt.DefaultWebSessionManager">
+      <property name ="sessionListeners">  
+        <list>  
+         <bean id="sessionListener" class="com.netease.ams.security.MySessionListener"></bean>
+        </list>  
+     </property>
+   </bean>-->
+    <bean id="securityManager" class="org.apache.shiro.web.mgt.DefaultWebSecurityManager">
+        <!-- Single realm app (realm configured next, below).  If you have multiple realms, use the 'realms'
+      property instead. 
+      <property name="sessionManager" ref="sessionManager"/>
+      -->
+        <property name="realm" ref="authRealm"/>
+        
+    </bean>
+    <!-- 項目自定义的Realm -->
+    <bean id="authRealm" class="com.shiro.AuthRealm">
+       <property name="authorizationCachingEnabled" value="false"/>
+        </bean>
+    <!-- Post processor that automatically invokes init() and destroy() methods -->
+    <bean id="lifecycleBeanPostProcessor" class="org.apache.shiro.spring.LifecycleBeanPostProcessor"/>
+    <bean id="shiroFilter" class="org.apache.shiro.spring.web.ShiroFilterFactoryBean">
+        <property name="securityManager" ref="securityManager"/>
+        <property name="loginUrl" value="/login"/>
+        <property name="successUrl" value="/home"/>
+        <property name="unauthorizedUrl" value="/login"/>
+        <property name="filters">
+            <util:map>
+            </util:map>
+        </property>
+        <property name="filterChainDefinitions">
+            <value>
+            	/test=anon
+                /login* = anon
+                /hibernate = anon
+                /VerifyLoginForIOS* = anon
+                /getLoginEncryptKey* =anon
+                /getKeyVi* = anon
+                /errorPage* =anon
+                /*/errorPage* =anon
+                /assetintegration/**=anon
+				/resources/** = anon
+                /** = authc
+            </value>
+        </property>
+    </bean>
+
+   
+</beans>        

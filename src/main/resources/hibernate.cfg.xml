@@ -1,0 +1,37 @@
+
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-configuration PUBLIC
+	"-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+	"http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+
+<hibernate-configuration>
+	<session-factory>
+		<!-- 配置数据库方言 -->
+		<property name="hibernate.dialect">org.hibernate.dialect.MySQL5InnoDBDialect</property>
+		<!-- 显示SQL语句 -->
+		<property name="hibernate.show_sql">true</property>
+		<!-- 格式化SQL语句 -->
+		<property name="hibernate.format_sql">false</property>
+		<!-- 支持自动建表 -->
+		<property name="hibernate.hbm2ddl.auto">none</property>
+		<property name="hibernate.connection.autocommit">true</property>
+		<!-- 当前Session的上下文 -->
+		<property name="hibernate.current_session_context_class">org.springframework.orm.hibernate3.SpringSessionContext</property>
+		<!-- -->
+		<property name="current_session_context_class">thread</property> 
+		<!-- 开启查询缓存 <property name="hibernate.cache.use_query_cache">true</property> -->
+		<!-- 开启二级缓存 <property name="hibernate.cache.use_second_level_cache">true</property> -->
+		<!-- 缓存的提供商 <property name="hibernate.cache.provider_class">org.hibernate.cache.SingletonEhCacheProvider</property> -->
+
+		<!-- ########################## 配置JAP注解实体 ####################### -->
+		<!-- <mapping class="com.netease.ams.model.AssetInfoTab"/>
+		 <mapping class="com.netease.ams.model.AssetInfoTab"/> 
+		 <mapping class="com.sql.hibrenate.TeacherTab"/>-->
+	
+	<mapping class="com.sql.hibrenate.TeacherTab"/>
+		<!-- 开启二级缓存 key: #0001 com.netease.ams.model.AssetInfoTab <class-cache 
+			usage="read-only" class=""/> -->
+
+
+	</session-factory>
+</hibernate-configuration>
