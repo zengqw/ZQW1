@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>  
+    <!DOCTYPE mapper  
+      PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"  
+          "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!--命名空间 -->
+<mapper namespace="com.mabatis.model.TeacherMap">
+	<select id="getTeacherByName" resultType="com.sql.mybatis.Teacher"
+		parameterType="string">
+		select * from teacher where name=#{name}
+	</select>
+
+<!-- 
+	<select id="getStudentById" resultType="Student" parameterType="int">
+		select * from student where id=#{id}
+	</select>
+
+	<insert id="insertStudent" parameterType="Student">
+		insert into student(id, name, password) value(#{id}, #{name}, #{password})
+	</insert>
+
+	<update id="updateStudent" parameterType="Student">
+		update student set name=#{name}, password=#{password} where id=#{id}
+	</update>
+
+	<delete id="deleteStudent" parameterType="String">
+		delete from student where name=#{name}
+	</delete>
+
+	<delete id="deleteStudentById" parameterType="int">
+		delete from student where id=#{id}
+	</delete>
+
+	<select id="selectStudentmohu" parameterType="String"
+		resultType="Student">
+		select * from student where name like "%"#{name}"%"
+	</select>
+	 -->
+</mapper>  

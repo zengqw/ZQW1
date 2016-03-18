@@ -105,4 +105,22 @@ public class LoginController extends BaseController {
 		out.println(JSON.toJSONString(rootMap));
 	}
 	
+	/**
+	 * 
+	 * 测试mybatis
+	 * @param request
+	 * @param response
+	 * @throws IOException
+	 */
+	@RequestMapping("/mybatis")
+	public void mybatis(HttpServletRequest request, HttpServletResponse response)
+			throws IOException {
+		PrintWriter out = response.getWriter();
+		Map rootMap = new HashMap();
+		rootMap.put("getTeacherByName", mybatisTeacherDao.getTeacherByName("zhang5").getAge());
+		rootMap.put("status", "true");
+		out.println(JSON.toJSONString(rootMap));
+	}
+	
+	
 }

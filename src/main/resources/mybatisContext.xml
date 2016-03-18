@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:tx="http://www.springframework.org/schema/tx"
+       xmlns:jee="http://www.springframework.org/schema/jee"
+       
+       xmlns:aop="http://www.springframework.org/schema/aop"
+		xmlns:p="http://www.springframework.org/schema/p"
+
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
+       http://www.springframework.org/schema/context
+       http://www.springframework.org/schema/context/spring-context-4.0.xsd
+       http://www.springframework.org/schema/tx
+       http://www.springframework.org/schema/tx/spring-tx-4.0.xsd
+       http://www.springframework.org/schema/aop 
+       http://www.springframework.org/schema/aop/spring-aop-4.0.xsd
+       http://www.springframework.org/schema/jee
+       http://www.springframework.org/schema/jee/spring-jee-4.0.xsd">
+       
+	<context:annotation-config />
+    <context:component-scan base-package="com.*"/>
+    	<context:property-placeholder location="classpath:jdbc.properties" />
+    <bean id="mysqlDataSource" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
+        <property name="driverClassName" value="${datasource.driverClass}"/>
+        <property name="url" value="${datasource.jdbcUrl}"/>
+        <property name="username" value="${datasource.user}"/>
+        <property name="password" value="${datasource.password}"/>
+        <property name="initialSize" value="${datasource.initialPoolSize}"/>
+        <property name="minIdle" value="${datasource.maxIdleTime}"/>
+        <property name="validationQuery" value="SELECT 1"/> 
+    </bean>
+    
+    <bean id="mysqlSqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+        <property name="dataSource" ref="mysqlDataSource"/>
+        <property name="configLocation" value="classpath:mybatis-config.xml"/>
+        <property name="mapperLocations" value="classpath:com/sql/mybatis/entity/mapper/*.xml" />
+    </bean>
+    <bean id="mysqlSqlSession" class="org.mybatis.spring.SqlSessionTemplate">  
+	  <constructor-arg index="0" ref="mysqlSqlSessionFactory" />  
+	  <constructor-arg index="1" value="BATCH" />
+	</bean>
+	
+
+    <bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+        <property name="dataSource" ref="mysqlDataSource"/>
+    </bean>
+    
+    <bean id="jdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate">
+		<property name="dataSource" ref="mysqlDataSource" />
+	</bean>
+	
+	<tx:annotation-driven transaction-manager="transactionManager"/>
+	
+</beans>

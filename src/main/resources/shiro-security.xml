@@ -51,6 +51,7 @@
             	/test=anon
                 /login* = anon
                 /hibernate = anon
+                /mybatis= anon
                 /VerifyLoginForIOS* = anon
                 /getLoginEncryptKey* =anon
                 /getKeyVi* = anon

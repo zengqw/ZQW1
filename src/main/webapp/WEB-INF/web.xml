@@ -13,7 +13,8 @@
 		<param-value>
 	      <!-- classpath:redis.xml -->
 			classpath:shiro-security.xml
-			classpath:context.xml
+			classpath:hibernateContext.xml
+			classpath:mybatisContext.xml
 	    </param-value>
 	</context-param>
 	<servlet>
